@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script language="javascript">
+$(function(){   
+    //导航切换
+    $(".disklist li").click(function(){
+        $(".disklist li.selected").removeClass("selected")
+        $(this).addClass("selected");
+    })  
+})  
+</script>
+</head>
+<body>
+    <div class="rightinfo"> 
+    <div class="tools">
+        <ul class="toolbar">
+        <li class="click"><span><img src="/Uimake/images/t01.png" /></span>添加</li>
+        </ul>
+    </div>
+    
+    <div class="comtitle">
+    <span><img src="images/clist.png" /></span>
+    <h2>网关列表</h2>
+    <div class="rline"></div>
+    </div>
+    
+    <ul class="disklist"> 
+    <li>
+    <a href="devicelist.html">
+    <div class="dleft1"></div>    
+    <div class="dright">
+    <h2>网关名:XXXXX</h2>
+    <p>XXXX</p>    
+    <p>YYY</p>    
+    </div>
+    </a>
+    </li>
+    
+    <li>
+    <div class="dleft"></div>    
+    <div class="dright">
+    </div>
+    </li>    
+    </ul>
+</body>
+</html>

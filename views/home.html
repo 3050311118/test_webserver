@@ -1,0 +1,233 @@
+﻿<%include header.html%>
+<div class="mainbox">
+  <div class="banner">
+    <div id="MSClassBox">
+      <ul id="ContentID">
+        <li><a href="#"><img border="0" src="/hhfile/images/banner.jpg" width="1000" height="317"/></a></li>
+        <li><a href="#"><img border="0" src="/hhfile/images/banner2.jpg" width="1000" height="317"/></a></li>
+        <li><a href="#"><img border="0" src="/hhfile/images/banner3.jpg" width="1000" height="317"/></a></li>
+      </ul>
+    </div>
+    <ul id="TabID">
+      <li class=""></li>
+      <li class=""></li>
+      <li class=""></li>
+    </ul>
+<script type="text/javascript">
+new Marquee(
+{
+	MSClassID : "MSClassBox",
+	ContentID : "ContentID",
+	TabID	  : "TabID",
+	Direction : 2,
+	Step	  : 0.3,
+	Width	  : 1000,
+	Height	  : 317,
+	Timer	  : 30,
+	DelayTime : 4000,
+	WaitTime  : 3,
+	ScrollStep: 3,
+	SwitchType: 2,
+	AutoStart : 1
+})
+</script>
+  </div>
+  <div class="leftnr">
+    <div class="column about">
+      <div class="title1"><span class="more"><a href="__URL__/productnews.html"><img src="/hhfile/images/more.gif" border="0" /></a></span>
+        <h2>公告栏目</h2>
+      </div>
+      <dl>
+		<div class="date"><center>发布时间:{$bulletin.time}</center></div>
+        <a href="__URL__/fieldnews/news.html">
+		<h2>
+	&nbsp;&nbsp;&nbsp;<strong>&nbsp;</strong><strong>{$bulletin.content}</strong>
+</h2>
+	</a>      
+	  </dl>
+      <div class="point2"></div>
+    </div>
+    <div class="column news">
+      <div class="title1"><span class="more"><a href="__URL__/news.html"><img src="__PUBLIC__/images/more.gif" border="0" /></a></span>
+        <h1>公司动态</h1>
+      </div>
+      <dl>
+		<p>
+			<center><img width="120" height="149" src="/Public/kindeditor/attached/image/20141231/20141231013600_48800.jpg" alt="" /></center> 
+		</p>	  
+		<p>
+			&nbsp;&nbsp;&nbsp;&nbsp;公司定于2015年2月9号过年放假，提前祝大家新年快乐!
+		</p>
+      </dl>
+      <div class="point2"></div>
+    </div>
+    <div class="product">
+      <div class="title1"><span class="more"><a href="__URL__/product.html"><img src="__PUBLIC__/images/more.gif" border="0" /></a></span>
+        <h2>最新产品</h2>
+      </div>
+      <div class="line">
+		  <div id="colee_left" style="overflow:hidden;width:680px; margin:0px auto;">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td id="colee_left1" valign="top" align="center"><table cellpadding="0" cellspacing="0" border="0">
+                <tr align="center">
+                  <td class="td1"><div class="tp"><a href="__URL__/product.html"><img src="/hhfile/images/newproduct/GSM远程控制.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">GSM远程控制</a></td>
+                  <td class="td1"><div class="tp"><a href="__URL__/product.html"><img src="/hhfile/images/newproduct/zigbee组网.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">zigbee组网</a></td>
+                  <td class="td1"><div class="tp"><a href="__URL__/product.html"><img src="/hhfile/images/newproduct/U盘数据记录.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">U盘数据记录</a></td>
+                  <td class="td1"><div class="tp"><a href="__URL__/product.html"><img src="/hhfile/images/newproduct/wifi数据传输.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">wifi数据传输</a></td>
+			      <td class="td1"><div class="tp"><a href="__URL__/product.html"><img src="/hhfile/images/newproduct/GPRS数据上传.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">gprs数据传输</a></td>
+                  <td class="td1"><div class="tp"><a href="__URL__/product.html"><img src="/hhfile/images/newproduct/实验室数据记录仪.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">实验室数据记录仪</a></td> 
+			</tr>
+              </table></td>
+            <td id="colee_left2" valign="top"></td>
+          </tr>
+        </table>
+      </div>
+      <script>
+//使用div时，请保证colee_left2与colee_left1是在同一行上.
+var speed=30//速度数值越大速度越慢
+var colee_left2=document.getElementById("colee_left2");
+var colee_left1=document.getElementById("colee_left1");
+var colee_left=document.getElementById("colee_left");
+colee_left2.innerHTML=colee_left1.innerHTML
+function Marquee3(){
+if(colee_left2.offsetWidth-colee_left.scrollLeft<=0)//offsetWidth 是对象的可见宽度
+colee_left.scrollLeft-=colee_left1.offsetWidth//scrollWidth 是对象的实际内容的宽，不包边线宽度
+else{
+colee_left.scrollLeft++
+}
+}
+var MyMar3=setInterval(Marquee3,speed)
+colee_left.onmouseover=function() {clearInterval(MyMar3)}
+colee_left.onmouseout=function() {MyMar3=setInterval(Marquee3,speed)}
+</script>
+      </div>
+      <div class="point3"></div>
+    </div>
+    <div class="product">
+      <div class="title1"><span class="more"><a href="#"><img src="/hhfile/images/more.gif" border="0" /></a></span>
+        <h2>客户产品</h2>
+      </div>
+      <div class="line">
+		  <div id="colee_left10" style="overflow:hidden;width:680px; margin:0px auto;">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td id="colee_left11" valign="top" align="center"><table cellpadding="0" cellspacing="0" border="0">
+                <tr align="center">
+                  <td class="td1"><div class="tp"><a href="http://www.boxun.com.cn/product.aspx"><img src="/hhfile/images/newproduct/customer/博讯CO2培养箱.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">博讯CO2培养箱</a></td>
+                  <td class="td1"><div class="tp"><a href="http://www.boxun.com.cn/product.aspx"><img src="/hhfile/images/newproduct/customer/博讯立式压力蒸汽灭菌器.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">博讯立式压力蒸汽灭菌器</a></td>
+                  <td class="td1"><div class="tp"><a href="http://www.boxun.com.cn/product.aspx"><img src="/hhfile/images/newproduct/customer/博讯人工气候箱.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">博讯人工气候箱</a></td>
+                  <td class="td1"><div class="tp"><a href="http://www.boxun.com.cn/product.aspx"><img src="/hhfile/images/newproduct/customer/博讯上午安全柜.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">博讯上午安全柜</a></td>
+			      <td class="td1"><div class="tp"><a href="http://www.shanghaikeheng.com"><img src="/hhfile/images/newproduct/customer/科恒低温恒温槽.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">科恒低温恒温槽</a></td>
+                  <td class="td1"><div class="tp"><a href="http://www.taisite.cn"><img src="/hhfile/images/newproduct/customer/泰斯特电热鼓风干燥箱.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">泰斯特电热鼓风干燥箱</a></td>
+                  <td class="td1"><div class="tp"><a href="http://www.shjiechenglab.com"><img src="/hhfile/images/newproduct/customer/上海捷呈台式恒温摇床.jpg" width="144" height="144" border="0" /></a></div>
+              <a href="#">上海捷呈台式恒温摇床</a></td>
+ 
+                </tr>
+              </table></td>
+            <td id="colee_left12" valign="top"></td>
+          </tr>
+        </table>
+      </div>
+      <script>
+//使用div时，请保证colee_left2与colee_left1是在同一行上.
+var speed=30//速度数值越大速度越慢
+var colee_left12=document.getElementById("colee_left12");
+var colee_left11=document.getElementById("colee_left11");
+var colee_left10=document.getElementById("colee_left10");
+colee_left12.innerHTML=colee_left11.innerHTML
+function Marquee1(){
+if(colee_left12.offsetWidth-colee_left10.scrollLeft<=0)//offsetWidth 是对象的可见宽度
+colee_left10.scrollLeft-=colee_left11.offsetWidth//scrollWidth 是对象的实际内容的宽，不包边线宽度
+else{
+colee_left10.scrollLeft++
+}
+}
+var MyMar1=setInterval(Marquee1,speed)
+colee_left10.onmouseover=function() {clearInterval(MyMar1)}
+colee_left10.onmouseout=function() {MyMar1=setInterval(Marquee1,speed)}
+</script>
+      </div>
+      <div class="point3"></div>
+    </div>
+  </div>
+  <div class="rightnr">
+    <div class="column notice">
+      <div class="title1"><span class="more"></span>
+        <h1>公司简介</h1>
+      </div>
+      <dl>
+        <!--<img src="/hhfile/images/p_about.jpg" width="318" height="89" />
+        <p>上海海闳电子科技有限公司创建于1992年，是一家集自动化、信息技术与产品研发、生产制造、市场营销及服务的民营高科技企业。公司产品主要涉及温度、湿度、速度、气体浓度及时间的调节，通讯技术，小型的集散控制系统...</p>
+      --><a href="__URL__/about.html">上海海闳电子科技有限公司（原上海海宏高科技实业公司）成立于2013年，是一家集自动化、信息技术与产品研发、生产制造、市场营销及服务的民营高科技企业。
+  </a>
+	</dl>
+      <div class="point1"></div>
+    </div>
+    <div class="column member">
+      <div class="title1"><span class="more"></span>
+        <center><h1>用户会员登陆中心</h1></center>
+      </div>
+	  <form name="login" action="loginAction" method="post">
+      <dl>
+        <dd>
+          <input name="name" type="text" class="input_user" onkeydown="if (event.keyCode==6) {}" onblur="if(this.value=='')value='请输入账号';" onfocus="if(this.value=='邮箱帐号或手机号')value='';" value="邮箱帐号或手机号"/>
+        </dd>
+        <dd>
+          <input name="passwd" type="password" class="input_pass" onkeydown="if (event.keyCode==6) {}" onblur="if(this.value=='')value='请输入密码';" onfocus="if(this.value=='密码')value='';" value="密码"/>
+        </dd>
+			<dd><a href="__URL__/password.html" class="forget">忘记密码？</a>
+          <input type="checkbox" name="checkbox" value="checkbox" />
+          十天内免登录</dd>
+        <dd>
+          <input type="submit" name="Submit" value="重置" class="btn_1 rt"/>
+          <input type="submit" name="Submit2" value="登录" class="btn_1"/>
+        </dd>
+      </dl>
+	  </form>
+      <div class="point1"></div>
+    </div>
+    <div class="column equipment">
+      <div class="title1"><span class="more"></span>
+        <h1>活跃网关</h1>
+      </div>
+      <dl>
+			<dd>
+			  <p><a href="__URL__/equipmentdetail/user/{$gyUser1}/gateway/{$gyName1}.html" target="_blank"><strong>{$gyName1}</strong></a><br />
+				{$gyDesc1} </p>
+			  <a href="__URL__/equipmentdetail/user/{$gyUser1}/gateway/{$gyName1}.html" target="_blank"><img src="/hhfile/images/p1.jpg" width="88" height="58" border="0" /></a>
+			</dd>
+			<dd>
+			  <p><a href="__URL__/equipmentdetail/user/{$gyUser2}/gateway/{$gyName2}.html" target="_blank">{$gyName2}</strong></a><br />
+				{$gyDesc2} </p>
+			  <a href="__URL__/equipmentdetail/user/{$gyUser2}/gateway/{$gyName2}.html" target="_blank"><img src="/hhfile/images/p1.jpg" width="88" height="58" border="0" /></a>
+			</dd>
+			<dd>
+			  <p><a href="__URL__/equipmentdetail/user/{$gyUser3}/gateway/{$gyName3}.html" target="_blank"><strong>{$gyName3}</strong></a><br />
+				{$gyDesc3} </p>
+			  <a href="__URL__/equipmentdetail/user/{$gyUser3}/gateway/{$gyName3}.html" target="_blank"><img src="/hhfile/images/p1.jpg" width="88" height="58" border="0" /></a>
+			</dd>
+			<dd>
+			  <p><a href="__URL__/equipmentdetail/user/{$gyUser4}/gateway/{$gyName4}.html" target="_blank"><strong>{$gyName4}</strong></a><br />
+				{$gyDesc4} </p>
+			  <a href="__URL__/equipmentdetail/user/{$gyUser4}/gateway/{$gyName4}.html" target="_blank"><img src="/hhfile/images/p1.jpg" width="88" height="58" border="0" /></a>
+			</dd>
+      </dl>
+      <div class="point1"></div>
+    </div>
+  </div>
+</div>
+
+<%include footer.html%>

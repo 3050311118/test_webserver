@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/Uimake/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Uimake/js/jquery.js"></script>
+   <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+   <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script language="javascript">
+$(function(){   
+    $(".imglist li").click(function(){
+        $(".imglist li.selected").removeClass("selected")
+        $(this).addClass("selected");
+    })  
+    $(".click").click(function(){
+      $(".tip").fadeIn(200);
+    });
+
+    $(".tiptop a").click(function(){
+      $(".tip").fadeOut(200);
+    });
+
+    $(".sure").click(function(){
+      $(".tip").fadeOut(100);
+    });
+
+    $(".cancel").click(function(){
+      $(".tip").fadeOut(100);
+    });
+})  
+</script>
+</head>
+
+<body>    
+    <div class="rightinfo"> 
+    <div class="tools">
+        <ul class="toolbar">
+        </ul>
+    </div>
+    
+    <ul class="classlist">
+    <%for(var i in items){%>     
+    <li>
+    <span><img src="/Uimake/images/c01.png" /></span>
+    <div class="lright">
+    <h2>设备名:传感器</h2>
+    <h5>序列号:<%=items[i].sn%></h5>
+    <a class="enter" href="/devicedata/<%=items[i].sn%>">查看数据</a>
+    </div>
+    </li>
+    <% } %>   
+    </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+#lightbox {
+	POSITION: absolute; TEXT-ALIGN: center; LEFT: 0%; top:272px; Z-INDEX: 100; LINE-HEIGHT: 0; width:100%;
+}
+#lightbox A IMG {
+	BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none
+}
+#outerImageContainer {
+	HEIGHT: 250px; POSITION: relative; MARGIN: 0px auto; WIDTH: 250px; BACKGROUND-COLOR: #fff
+}
+#imageContainer {
+	PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px
+}
+#imageContainer IMG {
+	MARGIN: 0px auto
+}
+#loading {
+	HEIGHT: 25%; POSITION: absolute; TEXT-ALIGN: center; LEFT: 0%; LINE-HEIGHT: 0; TOP: 40%; WIDTH: 100%
+}
+#hoverNav {
+	HEIGHT: 100%; POSITION: absolute; right: 0px; Z-INDEX: 10; TOP: 0px; WIDTH: 100%
+}
+#imageContainer > #hoverNav {
+	right: 0px
+}
+#hoverNav A {
+	OUTLINE-STYLE: none
+}
+#prevLink {
+	HEIGHT: 100%; BACKGROUND: url(../images/blank.gif) no-repeat; DISPLAY: block; WIDTH: 0%
+}
+#nextLink {
+	HEIGHT: 100%; BACKGROUND: url(../images/blank.gif) no-repeat; DISPLAY: block; WIDTH: 0%
+}
+#prevLink {
+	FLOAT: left; LEFT: 0px
+}
+#nextLink {
+	RIGHT: 0px; FLOAT: right
+}
+#prevLink:hover {
+	BACKGROUND: url(../images/prev.gif) no-repeat left 50%
+}
+#prevLink:hover:visited {
+	BACKGROUND: url(../images/prev.gif) no-repeat left 50%
+}
+#nextLink:hover {
+	BACKGROUND: url(../images/next.gif) no-repeat right 50%
+}
+#nextLink:hover:visited {
+	BACKGROUND: url(../images/next.gif) no-repeat right 50%
+}
+#nextLinkText { COLOR: #ff9834; TEXT-DECORATION: none
+}
+#prevLinkText { COLOR: #ff9834; TEXT-DECORATION: none
+}
+#nextLinkText {
+	PADDING-LEFT: 20px
+}
+#prevLinkText {
+	PADDING-RIGHT: 20px
+}
+.ontop #imageData {
+	PADDING-TOP: 5px
+}
+#imageDataContainer {
+	FONT: 12px/1.4em Verdana, Helvetica, sans-serif; MARGIN: 0px auto; BACKGROUND-COLOR: #fff
+}
+#imageData {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px;
+}
+#imageData #imageDetails {
+	TEXT-ALIGN: left; WIDTH: 90%; line-height:24px; padding-bottom:10px;
+}
+#imageData #caption {
+}
+#imageData #numberDisplay {
+	PADDING-BOTTOM: 1em; CLEAR: left; DISPLAY: none;
+}
+#bottomNavClose { margin:10px 10px 0px 0px; float:right;}
+
+#imageData #helpDisplay {
+	FLOAT: left; CLEAR: left; DISPLAY: block
+}
+#overlay {
+	HEIGHT: 500px; POSITION: absolute; LEFT: 0px; Z-INDEX: 90; DISPLAY: none; TOP: 0px; WIDTH: 100%; }
+.clearfix:after {
+	HEIGHT: 0px; CONTENT: "."; CLEAR: both; DISPLAY: block; VISIBILITY: hidden
+}
+* HTML > BODY .clearfix {
+	DISPLAY: inline-block; WIDTH: 100%
+}
+* HTML .clearfix {
+	HEIGHT: 1%
+}
+#lightboxIframe {
+	DISPLAY: none
+}

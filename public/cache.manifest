@@ -1,0 +1,15 @@
+CACHE MANIFEST 
+mycss.css
+myjs.js
+jquery.min.js
+highcharts.js
+
+EXCLUDE
+account_cn.html
+environment_cn.html
+index.html
+network_cn.html
+restart_cn.html
+restore_cn.html
+server_cn.html
+sysinfo_cn.html

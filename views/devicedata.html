@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/Uimake/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/Uimake/css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Uimake/js/jquery.js"></script>
+<script type="text/javascript" src="/Uimake/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="/Uimake/js/select-ui.min.js"></script>
+<script type="text/javascript" src="/Uimake/editor/kindeditor.js"></script>
+
+<script type="text/javascript">
+    KE.show({
+        id : 'content7',
+        cssPath : './index.css'
+    });
+  </script>
+  
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+        width : 345           
+    });
+    $(".select2").uedSelect({
+        width : 167  
+    });
+    $(".select3").uedSelect({
+        width : 100
+    });
+});
+</script>
+</head>
+
+<body>
+    <div class="place">
+    <span>序列号  :</span>
+    <ul class="placeul">
+    <li><%=sn%></li>
+    </ul>
+    </div>
+    <div class="formbody">
+    <div id="usual1" class="usual"> 
+    <div id="tab2" class="tabson">
+    <ul class="seachform">
+    
+    <li><label>综合查询</label><input name="" type="text" class="scinput" /></li>
+    <li><label>指派</label>  
+    <div class="vocation">
+    <select class="select3">
+    <option>全部</option>
+    <option>其他</option>
+    </select>
+    </div>
+    </li>
+    
+    <li><label>重点客户</label>  
+    <div class="vocation">
+    <select class="select3">
+    <option>全部</option>
+    <option>其他</option>
+    </select>
+    </div>
+    </li>
+    
+    <li><label>客户状态</label>  
+    <div class="vocation">
+    <select class="select3">
+    <option>全部</option>
+    <option>其他</option>
+    </select>
+    </div>
+    </li>
+    <li><label>&nbsp;</label><input name="" type="button" id="query" class="scbtn" value="查询"/></li>
+    </ul>
+    <br>
+    <br>
+    <div id="main2" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
+    </div> 
+    </div> 
+    <script type="text/javascript"> 
+      $("#usual1 ul").idTabs(); 
+    </script>
+    
+    <script type="text/javascript">
+    $('.tablelist tbody tr:odd').addClass('odd');
+    </script>
+        <script src="/echarts/echarts.js"></script>
+    
+    <script type="text/javascript">
+    var myChart;    
+    var dat1=[0],dat2=[0],dat3=[0];  
+
+   option = {
+        title : {
+            text: '温湿度显示',
+            subtext: ''
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['温度','湿度']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : dat1
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                axisLabel : {
+                    formatter: '{value} °C'
+                }
+            }
+        ],
+        series : [
+            {
+                name:'温度',
+                type:'line',
+                data:dat2,
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            },
+            {
+                name:'湿度',
+                type:'line',
+                data:dat3,
+                markPoint : {
+                    data : [
+                        {name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name : '平均值'}
+                    ]
+                }
+            }
+        ]
+    };        
+
+    $("#query").click(function(){
+        $.getJSON('/querydevdata/ESP5C_CF_7F_14_76_33/bbb/ccc', function (json) {
+            for(var i in json)
+            {
+                dat1[i]=json[i].time;
+                dat2[i]=json[i].ambtemp;
+                dat3[i]=json[i].ambhumi;
+            }
+            myChart.setOption(option);
+        });
+    })
+ 
+    // Step:3 conifg ECharts's path, link to echarts.js from current page.
+    // Step:3 为模块加载器配置echarts的路径，从当前页面链接到echarts.js，定义所需图表路径
+    require.config({
+        paths: {
+            echarts: '/echarts'
+        }
+    });
+    
+    // Step:4 require echarts and use it in the callback.
+    // Step:4 动态加载echarts然后在回调函数中开始使用，注意保持按需加载结构定义图表路径
+    require(
+        [
+            'echarts',
+            'echarts/chart/bar',
+            'echarts/chart/line',
+            'echarts/chart/map'
+        ],
+        function (ec) {
+            myChart = ec.init(document.getElementById('main2'));
+            myChart.setOption(option)
+        }
+    )
+    </script>
+    </div>
+</body>
+</html>

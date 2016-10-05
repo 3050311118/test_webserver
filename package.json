@@ -1,0 +1,16 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "3.5.0",
+    "jade": "*",
+    "wechat": "1.2.1",
+    "ejs": "~2.4.1",
+    "express-session": "~1.13.0",
+    "socket.io": "~1.4.5"
+  }
+}

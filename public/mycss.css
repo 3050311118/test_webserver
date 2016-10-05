@@ -1,0 +1,276 @@
+#main{
+    height:600px;
+    background: #dffaff;
+    margin:10px 50px;
+    border-radius:20px 20px 20px 20px;
+}
+#Header{
+    height:80px;
+}
+#logo{
+    padding-left:50px;
+    padding-top:20px;
+    padding-bottom:50px;
+}
+#value{
+    width:30px;
+    height:400px;
+    margin-left:30px;
+}
+p{
+    float:left;
+    margin:2px 10px 2px 10px;
+    padding-top:4px;
+    font-size:20px;
+    font-weight:bold;
+}
+#contentleft{
+    height:400px;
+    width:200px;
+    margin:20px;/*设置元素跟其他元素的距离为20像素*/
+    margin-left:50px;
+    float:left;/*设置浮动，实现多列效果，div+Css布局中很重要的*/
+}
+#container{
+    height:400px;
+    margin:20px 20px 20px;/*设置元素跟其他元素的距离为20像素*/
+    float:left;/*设置浮动，实现多列效果，div+Css布局中很重要的*/
+    border-radius:20px 20px 20px 20px;
+}
+
+
+
+.in_body
+{
+    margin-top:0px;
+    margin-left:0px;
+    margin-right:0px;
+    margin-bottom:0px;
+    background-color:transparent;
+}
+.div_c
+{
+    margin-left:50px;
+    margin-right:50px;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.w_s15_b
+{
+    color:White;
+    font-size:15px;
+    font-weight:bold;
+}
+.white
+{
+    color:White;
+}
+.s15
+{
+    font-size:15px;
+}
+.b
+{
+    font-weight:bold;
+}
+.sp_5
+{
+    width:10px;
+    height:5px;
+}
+.sp_53
+{
+    width:10px;
+    height:53px;
+}
+.sp_60
+{
+    width:10px;
+    height:60px;
+}
+.lab_4
+{
+    margin-left:70px;
+    margin-right:50px;
+    color:white;
+    font-size:13px;
+}
+.lab_5
+{
+    font-size:15px;
+    color:White;
+    margin-left:-10px;
+}
+.lab_2
+{
+    float:left;
+    width:40%;
+    color:white;
+    margin-bottom:-2px;
+    font-size:13px;
+}
+.cl
+{
+    clear:left;
+}
+.sp_10
+{
+    width:10px;
+    height:10px;
+}
+.line
+{
+    height:1px;
+    background-color:white;
+    width:100%;
+    margin-top:5px;
+    margin-bottom:5px;
+    overflow:hidden;
+}
+.line_l
+{
+    height:1px;
+    background-color:white;
+    width:450px;
+    margin-top:5px;
+    margin-bottom:5px;
+    margin-left:50px;
+    overflow:hidden;
+}
+.line2
+{
+    height:1px;
+    background-color:white;
+    width:100%;
+    margin-bottom:10px;
+    overflow:hidden;
+}
+.text_div
+{
+    float:left;
+    width:60%;
+    text-align:right;
+}
+.btn
+{
+    width:66px;
+    height:27px;
+    border-style:none;
+    border-radius:3px 3px 3px 3px;
+    font-size:14px;
+    color:#0163AC;
+    cursor:pointer;
+}
+.r20
+{
+    margin-right:20px;
+}
+.lan
+{
+    cursor:pointer;
+    text-decoration:none;
+    color:#0163AC;
+    font-size:12px;
+    margin-left:3px;
+}
+.font_en
+{
+    font-family:Arial;
+}
+.lan_r
+{
+    margin-right:5px;
+}
+.opt_sel
+{
+    height:30px;
+    background-color:#006699;
+    padding-left:25px;
+    color:White;
+    cursor:pointer;
+}
+.opt_no
+{
+    height:30px;
+    padding-left:25px;
+    cursor:pointer;
+    color:#757475;
+}
+.opt_cn
+{
+    padding-top:4px;
+    font-size:18px;
+}
+.opt_cn_big
+{
+    padding-top:4px;
+    font-size:20px;
+    font-weight:bold;
+}
+.shadow
+{
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+.back_div
+{
+    width:600px;
+    float:left;
+    background:scroll center center;
+    background-color:#006699;
+    margin-top:10px;
+    border-radius:20px 20px 20px 20px;
+}
+.sp_20
+{
+    width:10px;
+    height:20px;
+}
+.sp_80
+{
+    width:10px;
+    height:80px;
+}
+.bot_txt
+{
+    font-family:Arial;
+    font-size:14px;
+    text-align:center;
+    color:#757475;
+}
+.cu_b
+{
+    cursor:pointer;
+    font-weight:bold;
+}
+.label
+{
+    float:left;
+    width:50%;
+    color:white;
+    margin-bottom:-2px;
+    font-size:13px;
+}
+.lab_l
+{
+    float:left;
+    width:40%;
+    color:white;
+    margin-bottom:-2px;
+    margin-left:10%;
+    font-size:13px;
+}
+.lab_r
+{
+    float:left;
+    width:50%;
+    color:white;
+    text-align:right;
+    font-size:13px;
+}
+.text2
+{
+    text-align:center;
+}
