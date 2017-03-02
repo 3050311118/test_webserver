@@ -167,6 +167,7 @@ app.post('/test',function(req,res){
 })
 
 //restful接口
+app.get('/wechat', routes.wechat);
 app.post('/wechat', routes.wechat);
 app.post('/checksn',routes.checksn);
 app.post('/checkemail',routes.checkemail);
