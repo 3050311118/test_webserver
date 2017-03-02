@@ -57,14 +57,16 @@ serverInit();
 
 var items=[{title:"ÎÄÕÂ1"},{title:"ÎÄÕÂ2"}];
 var wxconfig = {
-  token: 'mogu',
-  appid: 'wxfc2052b2c7c7cc2f',
-  encodingAESKey: 'c3Xb5lUJtCihC6lacNNXp7zChwkridfgnkJCVjdthsk'
+  token: 'weixin',
+  appid: 'wx49504f1f16265350',
+  appsecret :'47023108954c24e755331a5da6605490', 
+  encodingAESKey: 'PYBQANe5rzyxNF4QDqGpI3hoaE6G7TkaQPM3WIpihBr'
 };
 //E51gxulwvNv0WF-g-ouqdZVvdK_gcNED099vdUvkt7aBr-f13kBp6Ew6LV7GJ9IcMF3Ty0wh-wKE_Y1D7pyrsH75IF52gYYoX3nCdZpnMjzVwk2wL32LfMUKtxf-GHuKDANjAHAIFS
 exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   // Î¢ÐÅÊäÈëÐÅÏ¢¶¼ÔÚreq.weixinÉÏ
   var message = req.weixin;
+  console.log(message);
   if(message.MsgType == 'event')
   {
     if(message.Event == 'subscribe')
@@ -649,4 +651,3 @@ exports.adduser = function(req, res){
 exports.qrcode = function(req, res){
   res.sendfile('views/qrcode.html');
 };
-
