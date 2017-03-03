@@ -25,7 +25,7 @@ function serverInit()
   mongoDataClient = new mongodb.Db('data', mongodbServer);
 
   mqttClient = mqtt.connect('mqtt://localhost');  
-  client.on('connect', function () {
+  mqttClient.on('connect', function () {
       console.log("mqttjs connected");
   })
   redisClient = redis.createClient();
@@ -77,7 +77,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     }
   }else if(message.MsgType == 'text'){
     if(message.Content === '1'){
-       client.publish('WIFI2716979/SUB',"AAA");
+       mqttClient.publish('WIFI2716979/SUB',"AAA");
     } 
     else if(message.Content === '2'){
     }
