@@ -107,45 +107,14 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       };
       var post_req = https.request(post_option, function(res){
           res.on('data', function(buffer){
-          console.log(buffer.toString());
+           console.log(buffer.toString());
+          });
       });
       post_req.write(strbody);
       post_req.end();
     }else if(message.Content === '3'){
     }
   }
- /* if (message.FromUserName === 'diaosi') {
-    // »Ø¸´?Ë¿(ÆÕÍ¨»Ø¸´)
-    res.reply('hehe');
-  } else if (message.FromUserName === 'text') {
-    //ÄãÒ²¿ÉÒÔÕâÑù»Ø¸´textÀàÐÍµÄÐÅÏ¢
-    res.reply({
-      content: 'text object',
-      type: 'text'
-    });
-  } else if (message.FromUserName === 'hehe') {
-    // »Ø¸´Ò»¶ÎÒôÀÖ
-    res.reply({
-      type: "music",
-      content: {
-        title: "À´¶ÎÒôÀÖ°É",
-        description: "Ò»ÎÞËùÓÐ",
-        musicUrl: "http://mp3.com/xx.mp3",
-        hqMusicUrl: "http://mp3.com/xx.mp3",
-        thumbMediaId: "thisThumbMediaId"
-      }
-    });
-  } else {
-    // »Ø¸´¸ß¸»Ë§(Í¼ÎÄ»Ø¸´)
-    res.reply([
-      {
-        title: 'ÄãÀ´ÎÒ¼Ò½ÓÎÒ°É',
-        description: 'ÕâÊÇÅ®ÉñÓë¸ß¸»Ë§Ö®¼äµÄ¶Ô»°',
-        picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
-        url: 'http://nodeapi.cloudfoundry.com/'
-      }
-    ]);
-  }*/
 });
 
 
