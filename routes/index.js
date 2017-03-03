@@ -108,12 +108,13 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
           'Content-Length': strbody.length
         }
       };
+      console.log(strbody);
       var post_req = https.request(options, function(res){
+          post_req.write(strbody);
           res.on('data', function(buffer){
            console.log(buffer.toString());
           });
-      });
-      post_req.write(strbody);
+      });      
       post_req.end();
     }else if(message.Content === '3'){
     }
