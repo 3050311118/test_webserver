@@ -71,11 +71,12 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   {
     if(message.Event == 'subscribe')//订阅事件
     {
-      res.reply("Ð»Ð»¹Ø×¢xx");
-      console.log("subscribe");
+      res.reply("欢迎订阅小聪科技");
     }else if(message.Event == 'unsubscribe')
     {
-      console.log("unsubscribe");
+    }else if(message.Event == 'scancode_waitmsg')
+    {
+      res.reply("请输入下列标签验证码");
     }
   }else if(message.MsgType == 'text'){
     if(message.Content === '1')
