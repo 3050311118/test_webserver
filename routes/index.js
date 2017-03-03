@@ -55,7 +55,7 @@ function serverInit()
 }
 serverInit();
 
-var items=[{title:"ÎÄÕÂ1"},{title:"ÎÄÕÂ2"}];
+var items=[{title:"消息"},{title:"消息"}];
 var wxconfig = {
   token: 'weixin',
   appid: 'wx49504f1f16265350',
@@ -69,7 +69,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   console.log(message);
   if(message.MsgType == 'event')
   {
-    if(message.Event == 'subscribe')
+    if(message.Event == 'subscribe')//订阅事件
     {
       res.reply("Ð»Ð»¹Ø×¢xx");
       console.log("subscribe");
