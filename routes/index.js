@@ -37,8 +37,8 @@ function serverInit()
       secureConnection: true, // use SSL
       port: 465, // port for secure SMTP
       auth: {
-          user: "844725532@qq.com",
-          pass: "ahelloxizang"
+          user: "xxxx",
+          pass: "xxxxx"
       }
   });
 
