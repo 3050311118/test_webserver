@@ -78,7 +78,10 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   }else if(message.MsgType == 'text'){
     if(message.Content === '1'){
        mqttClient.publish('WIFI2716979/SUB',"AAA");
-      setTimeout( 'res.reply("XXXX")',5000);
+      var reply=function(){
+        res.reply("XXXX");
+      }
+      setTimeout(reply,5000);
     } 
     else if(message.Content === '2'){
     }
