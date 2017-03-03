@@ -98,14 +98,17 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       };
       var strbody=JSON.stringify(ack);  
       var url='https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=wdIoX9Arw1dAhjokszG9TrWi4v5PMkWb-CNEh1mMVRrPJtoKBMlipFa5aoS1CXhzBZf9hiYHn5GkxQoDxVUImzLU9-DbE0d5l5bZxF5sLnUVNBcABAIAO';
-      var post_option;
-      post_option.method = 'POST';
-      post_option.port = 443;
-      post_option.headers = {
-        'Content-Type': 'application/json',
-        'Content-Length': strbody.length
+      var options = {
+        host: 'api.weixin.qq.com',
+        port: 443,
+        path: '/cgi-bin/message/custom/send?access_token=wdIoX9Arw1dAhjokszG9TrWi4v5PMkWb-CNEh1mMVRrPJtoKBMlipFa5aoS1CXhzBZf9hiYHn5GkxQoDxVUImzLU9-DbE0d5l5bZxF5sLnUVNBcABAIAO'',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': strbody.length
+        }
       };
-      var post_req = https.request(post_option, function(res){
+      var post_req = https.request(options, function(res){
           res.on('data', function(buffer){
            console.log(buffer.toString());
           });
