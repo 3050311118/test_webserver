@@ -77,9 +77,9 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     }
   }else if(message.MsgType == 'text'){
     var content=message.Content;
-    if (content.substring(0,3)==="aa"){
+    if (content.substring(0,3)==="aaa"){
       res.reply("aaaa");
-    }else if (content.substring(0,3)==="bb"){
+    }else if (content.substring(0,3)==="bbb"){
       res.reply("bbbb");
     }
     
