@@ -1,6 +1,5 @@
 var nodemailer = require("nodemailer");
 var wechat = require('wechat');
-// var API = require('wechat-api');
 var redis = require("redis");
 var mqtt = require('mqtt');
 var mongodb = require('mongodb');
@@ -26,7 +25,9 @@ function serverInit()
   mongoDataClient = new mongodb.Db('data', mongodbServer);
 
   mqttClient = mqtt.connect('mqtt://localhost');  
-
+  client.on('connect', function () {
+      console.log("mqttjs connected");
+  })
   redisClient = redis.createClient();
   redisClient.on("error", function (err) {
     console.log("Error " + err);
@@ -62,56 +63,26 @@ var wxconfig = {
   appsecret :'47023108954c24e755331a5da6605490', 
   encodingAESKey: 'PYBQANe5rzyxNF4QDqGpI3hoaE6G7TkaQPM3WIpihBr'
 };
-//E51gxulwvNv0WF-g-ouqdZVvdK_gcNED099vdUvkt7aBr-f13kBp6Ew6LV7GJ9IcMF3Ty0wh-wKE_Y1D7pyrsH75IF52gYYoX3nCdZpnMjzVwk2wL32LfMUKtxf-GHuKDANjAHAIFS
 exports.wechat = wechat(wxconfig.token, function (req, res, next) {
-  // Î¢ÐÅÊäÈëÐÅÏ¢¶¼ÔÚreq.weixinÉÏ
   var message = req.weixin;
   console.log(message);
   if(message.MsgType == 'event')
   {
-    if(message.Event == 'subscribe')//订阅事件
-    {
+    if(message.Event == 'subscribe'){//订阅事件
       res.reply("欢迎订阅小聪科技");
-    }else if(message.Event == 'unsubscribe')
-    {
-    }else if(message.Event == 'scancode_waitmsg')
-    {
-      res.reply("请输入下列标签验证码");
+    }else if(message.Event == 'unsubscribe'){
+      
+    }else if(message.Event == 'scancode_waitmsg'){
+      res.reply("请输入并发送标签上的验证码");
     }
   }else if(message.MsgType == 'text'){
-    if(message.Content === '1')
-    {
-      redisClient.publish("mail", 'new');  
-      mqttClient.publish('hello', 'Hello mqtt');
-      console.log("mqtt");
-      res.reply([
-        {
-          title: 'ÄãÀ´ÎÒ¼Ò½ÓÎÒ°É',
-          description: 'ÕâÊÇÅ®ÉñÓë¸ß¸»Ë§Ö®¼äµÄ¶Ô»°',
-          picurl: 'https://www.baidu.com/img/bd_logo1.png',
-          url: 'http://www.baidu.com/'
-        }
-      ]);
+    if(message.Content === '1'){
+       client.publish('WIFI2716979/SUB',"AAA");
     } 
-    else if(message.Content === '2')   
-    {
-      res.reply({
-        type: "music",
-        content: {
-          title: "À´¶ÎÒôÀÖ°É",
-          description: "Ò»ÎÞËùÓÐ",
-          musicUrl: "http://mp3.com/xx.mp3",
-          hqMusicUrl: "http://mp3.com/xx.mp3",
-          thumbMediaId: "thisThumbMediaId"
-        }
-      });
+    else if(message.Content === '2'){
     }
-    else if(message.Content === '3') 
-    {
-
-
+    else if(message.Content === '3'){
     }
-   //     res.reply({ type: "text", content: "you input " + message.Content});  
   }
  /* if (message.FromUserName === 'diaosi') {
     // »Ø¸´?Ë¿(ÆÕÍ¨»Ø¸´)
