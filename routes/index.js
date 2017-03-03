@@ -101,7 +101,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       var options = {
         host: 'api.weixin.qq.com',
         port: 443,
-        path: '/cgi-bin/message/custom/send?access_token=wdIoX9Arw1dAhjokszG9TrWi4v5PMkWb-CNEh1mMVRrPJtoKBMlipFa5aoS1CXhzBZf9hiYHn5GkxQoDxVUImzLU9-DbE0d5l5bZxF5sLnUVNBcABAIAO'',
+        path: '/cgi-bin/message/custom/send?access_token=wdIoX9Arw1dAhjokszG9TrWi4v5PMkWb-CNEh1mMVRrPJtoKBMlipFa5aoS1CXhzBZf9hiYHn5GkxQoDxVUImzLU9-DbE0d5l5bZxF5sLnUVNBcABAIAO',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
