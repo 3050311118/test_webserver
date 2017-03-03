@@ -93,7 +93,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
         "touser": "oHOgqwvXok5LsBNOOpV6jSZzX6Js", 
         "msgtype": "text", 
         "text": {
-            "content": "你好"
+            "content": "xxxx"
         }
       };
       var strbody=JSON.stringify(ack);  
@@ -109,12 +109,12 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
         }
       };
       console.log(strbody);
-      var post_req = https.request(options, function(res){
-          post_req.write(strbody);
+      var post_req = https.request(options, function(res){        
           res.on('data', function(buffer){
            console.log(buffer.toString());
           });
-      });      
+      });   
+      post_req.write(strbody);
       post_req.end();
     }else if(message.Content === '3'){
     }
