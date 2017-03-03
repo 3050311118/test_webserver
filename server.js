@@ -9,7 +9,7 @@ var app = express();
 var numCPUs = require('os').cpus().length;
 console.log(numCPUs);
 // all environments
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 9001);
 app.set('views', path.join(__dirname, 'views'));//__dirname
 app.engine('html',ejs.__express);
 app.set('view engine', 'html');
