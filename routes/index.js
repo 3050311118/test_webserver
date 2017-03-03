@@ -5,6 +5,7 @@ var mqtt = require('mqtt');
 var mongodb = require('mongodb');
 var crypto = require('crypto');
 var uuid = require('node-uuid');  
+var https = require('https');
 
 var mongodbServer;
 var mongoClient;
@@ -65,7 +66,9 @@ var wxconfig = {
 };
 exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   var message = req.weixin;
+  var fromUser = message.FromUserName;  
   console.log(message);
+  
   if(message.MsgType == 'event')
   {
     if(message.Event == 'subscribe'){//订阅事件
@@ -85,10 +88,30 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     
     if(message.Content === '1'){
       mqttClient.publish('WIFI2716979/SUB',"AAA");
-    } 
-    else if(message.Content === '2'){
-    }
-    else if(message.Content === '3'){
+    }else if(message.Content === '2'){
+      var ack={
+        "touser": "oHOgqwvXok5LsBNOOpV6jSZzX6Js", 
+        "msgtype": "text", 
+        "text": {
+            "content": "你好"
+        }
+      };
+      var strbody=JSON.stringify(ack);  
+      var url='https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=wdIoX9Arw1dAhjokszG9TrWi4v5PMkWb-CNEh1mMVRrPJtoKBMlipFa5aoS1CXhzBZf9hiYHn5GkxQoDxVUImzLU9-DbE0d5l5bZxF5sLnUVNBcABAIAO';
+      var post_option;
+      post_option.method = 'POST';
+      post_option.port = 443;
+      post_option.headers = {
+        'Content-Type': 'application/json',
+        'Content-Length': strbody.length
+      };
+      var post_req = https.request(post_option, function(res){
+          res.on('data', function(buffer){
+          console.log(buffer.toString());
+      });
+      post_req.write(strbody);
+      post_req.end();
+    }else if(message.Content === '3'){
     }
   }
  /* if (message.FromUserName === 'diaosi') {
