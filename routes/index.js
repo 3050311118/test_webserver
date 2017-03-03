@@ -76,13 +76,15 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       res.reply("请输入并发送标签上的验证码");
     }
   }else if(message.MsgType == 'text'){
+    var content=message.Content;
+    if (content.substring(0,3)==="aa"){
+      res.reply("aaaa");
+    }else if (content.substring(0,3)==="bb"){
+      res.reply("bbbb");
+    }
+    
     if(message.Content === '1'){
-       mqttClient.publish('WIFI2716979/SUB',"AAA");
-      var aa=res;
-      var reply=function(){
-        this.aa.reply("XXXX");
-      }
-      setTimeout(reply,5000);
+      mqttClient.publish('WIFI2716979/SUB',"AAA");
     } 
     else if(message.Content === '2'){
     }
