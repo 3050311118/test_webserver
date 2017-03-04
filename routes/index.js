@@ -102,7 +102,7 @@ function WeixinPush(pushType,openID){
 //初始化
 function serverInit()
 {
-  setInterval(getAccessToken, 20000);
+  setInterval(getAccessToken, 200000);
   mongodbServer = new mongodb.Server('localhost', 27017, { auto_reconnect: true, poolSize: 10 });
   mongodbClient = new mongodb.Db('account', mongodbServer);
   mongoDataClient = new mongodb.Db('data', mongodbServer);
