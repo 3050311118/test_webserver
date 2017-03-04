@@ -55,16 +55,16 @@ function weixinRequest(urltype,content){
 //微信推送
 function WeixinPush(pushType,openID){
       if(pushType === 'custom'){
-          var customAck={
+          var customPush={
             "touser": openID, 
             "msgtype": "text", 
             "text": {
                 "content": "xxxx"
             }
           };
-          weixinRequest('custom',ack);
+          weixinRequest('custom',customPush);
       }else if(pushType === 'template'){
-           var templateAck={ 
+           var templatePush={ 
             "touser":openID, 
             "template_id":"_uLRsfIvaGOSae_mYY2mKD9Na6YMqwvCCDxOxA0_Lf0", 
             "url":"www.baidu.com", 
@@ -96,7 +96,7 @@ function WeixinPush(pushType,openID){
                     } 
             } 
          };
-         weixinRequest('template',ack); 
+         weixinRequest('template',templatePush); 
       }    
 }
 //初始化
