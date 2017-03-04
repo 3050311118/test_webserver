@@ -1,4 +1,3 @@
-'use strict';
 const request = require('request');
 const qs = require('querystring');
 const fs = require('fs');
