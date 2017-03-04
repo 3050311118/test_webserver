@@ -6,9 +6,12 @@ var mongodb = require('mongodb');
 var crypto = require('crypto');
 var uuid = require('node-uuid');  
 var https = require('https');
-var getToken=require('../common')
-//getToken();
+var request = require('request');
+var qs = require('querystring');
+var fs = require('fs');
+var wxconfig = require('../config');
 
+var tokenValue={};
 var mongodbServer;
 var mongoClient;
 var redisClient;
@@ -16,12 +19,29 @@ var mqttClient;
 var mongo,mongoData;
 var mailTransport;
 
+function getAccessToken() {
+  var queryParams = {
+    'grant_type': 'client_credential',
+    'appid': config.appid,
+    'secret': config.appsecret
+  };
+  var wxGetAccessTokenBaseUrl = 'https://api.weixin.qq.com/cgi-bin/token?'+qs.stringify(queryParams);
+  var options = {
+    method: 'GET',
+    url: wxGetAccessTokenBaseUrl
+  };
+  request(options, function (err, res, body) {
+    console.log(JSON.parse(body));
+    tokenValue=body;
+  });
+};
+
 function weixinRequest(urltype,content){
       var url='';
       if(urltype===1){
-        url='/cgi-bin/message/custom/send?access_token='+'NOz0ZN6ZAkVAlhcM_w95Fi_Ag1hqgiXfF6g4F8ADroAfnZAg_rDSGEP7tB0iSE4kY_Bu1RaY0Z-RpTnN9-4QPTHI-vFgT3nHJlMCM8gZoQbfuKL6SxaceY6IfZWPn8axFOQiAEAAJL';
+        url='/cgi-bin/message/custom/send?access_token='+tokenValue.access_token;
       }else if(urltype==2){
-        url='/cgi-bin/message/custom/send?access_token='+'NOz0ZN6ZAkVAlhcM_w95Fi_Ag1hqgiXfF6g4F8ADroAfnZAg_rDSGEP7tB0iSE4kY_Bu1RaY0Z-RpTnN9-4QPTHI-vFgT3nHJlMCM8gZoQbfuKL6SxaceY6IfZWPn8axFOQiAEAAJL';
+        url='/cgi-bin/message/custom/send?access_token='+tokenValue.access_token;
       }
       var strbody=JSON.stringify(content);  
       var options = {
@@ -46,6 +66,7 @@ function weixinRequest(urltype,content){
 
 function serverInit()
 {
+  setInterval(getAccessToken, 20000);
   mongodbServer = new mongodb.Server('localhost', 27017, { auto_reconnect: true, poolSize: 10 });
   mongodbClient = new mongodb.Db('account', mongodbServer);
   mongoDataClient = new mongodb.Db('data', mongodbServer);
@@ -82,13 +103,6 @@ function serverInit()
 }
 serverInit();
 
-var items=[{title:"消息"},{title:"消息"}];
-var wxconfig = {
-  token: 'weixin',
-  appid: 'wx49504f1f16265350',
-  appsecret :'47023108954c24e755331a5da6605490', 
-  encodingAESKey: 'PYBQANe5rzyxNF4QDqGpI3hoaE6G7TkaQPM3WIpihBr'
-};
 exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   var message = req.weixin;
   var fromUser = message.FromUserName;  
