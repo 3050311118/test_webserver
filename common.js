@@ -22,7 +22,7 @@ var getAccessToken = function () {
 };
 
 var refreshToken = function () {
-  setInterval(getAccessToken(), 1000);
+  setInterval(getAccessToken(), 10000);
 };
 
 module.exports = refreshToken;
