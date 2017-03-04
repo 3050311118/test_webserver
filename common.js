@@ -29,6 +29,7 @@ var getAccessToken = function () {
 var saveToken = function () {
   getAccessToken().then(function(){
     var token = res['access_token'];
+    console.log(token);
     fs.writeFile('./token', token, function (err) {
       
     });
