@@ -65,7 +65,7 @@ function serverInit()
       console.log("mqttjs connected");
       mqttClient.subscribe('push')
   });
-  mqttClient.on('disconnect',function(packet){
+  mqttClient.on('close',function(packet){
       console.log("mqttjs disconnected"); 
       mqttClient.connect('mqtt://localhost');  
   });  
