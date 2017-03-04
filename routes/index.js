@@ -51,25 +51,6 @@ function weixinRequest(urltype,content){
       request(options, function (err, res, body) {
         console.log("send");
       });  
-//       var options = {
-//         host: 'api.weixin.qq.com',
-//         port: 443,
-//         path: url, 
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//           'Content-Length': strbody.length
-//         }
-//       };
-//       console.log(url);
-//       console.log(strbody);
-//       var post_req = https.request(options, function(res){        
-//           res.on('data', function(buffer){
-//              console.log(buffer.toString());
-//           });
-//       });   
-//       post_req.write(strbody);
-//       post_req.end();
 }
 //初始化
 function serverInit()
@@ -85,6 +66,7 @@ function serverInit()
   })
   mqttClient.on('disconnect',function(packet){
       console.log("mqttjs disconnected"); 
+      mqttClient.connect('mqtt://localhost');  
   });  
   
   redisClient = redis.createClient();
