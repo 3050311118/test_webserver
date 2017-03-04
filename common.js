@@ -39,6 +39,7 @@ const saveToken = function () {
 const refreshToken = function () {
   saveToken();
   setInterval(function () {
+    console.log("saveToken");
     saveToken();
   }, 7000*1000);
 };
