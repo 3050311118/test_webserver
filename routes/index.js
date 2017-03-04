@@ -145,27 +145,27 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
           "topcolor":"#FF0000", 
           "data":{ 
                   "first": { 
-                      "value":"恭喜你购买成功！", 
+                      "value":"aaaaaaaa", 
                       "color":"#173177" 
                   }, 
                   "keyword1":{ 
-                      "value":"产品名称", 
+                      "value":"bbbbbbbbb", 
                       "color":"#173177" 
                   }, 
                   "keyword2":{ 
-                      "value":"订单号", 
+                      "value":"ccccccc", 
                       "color":"#173177" 
                   }, 
                   "keyword3":{ 
-                      "value":"订单价格", 
+                      "value":"ddddd", 
                       "color":"#173177" 
                   }, 
                   "keyword4":{ 
-                      "value":"订购时间", 
+                      "value":"eeeee", 
                       "color":"#173177" 
                   }, 
                   "remark":{ 
-                      "value":"欢迎再次购买！", 
+                      "value":"fffff", 
                       "color":"#173177" 
                   } 
           } 
