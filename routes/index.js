@@ -11,21 +11,22 @@ var qs = require('querystring');
 var fs = require('fs');
 var wxconfig = require('../config');
 
-var tokenValue={};
 var mongodbServer;
 var mongoClient;
 var redisClient;
 var mqttClient;
 var mongo,mongoData;
 var mailTransport;
+var tokenValue={};
 
+//定时获取微信access_token
 function getAccessToken() {
   var queryParams = {
     'grant_type': 'client_credential',
     'appid': wxconfig .appid,
     'secret': wxconfig .appsecret
   };
-  var url = '/cgi-bin/token?'+qs.stringify(queryParams);
+  var url = wxconfig.tokenUrl+qs.stringify(queryParams);
   var options = {
     host: 'api.weixin.qq.com',
     method: 'GET',
@@ -36,13 +37,13 @@ function getAccessToken() {
     tokenValue=JSON.parse(body);
   });
 };
-
+//微信客服接口和模板接口
 function weixinRequest(urltype,content){
       var url='';
       if(urltype==='custom'){
-        url='/cgi-bin/message/custom/send?access_token='+tokenValue.access_token;
+        url=wxconfig.customUrl+tokenValue.access_token;
       }else if(urltype==='template'){
-        url='/cgi-bin/message/template/send?access_token='+tokenValue.access_token;
+        url=wxconfig.templateUrl+tokenValue.access_token;
       }
       var options = {
         host: 'api.weixin.qq.com',
@@ -64,7 +65,7 @@ function weixinRequest(urltype,content){
       post_req.write(strbody);
       post_req.end();
 }
-
+//初始化
 function serverInit()
 {
   setInterval(getAccessToken, 20000);
@@ -76,11 +77,16 @@ function serverInit()
   mqttClient.on('connect', function () {
       console.log("mqttjs connected");
   })
+  mqttClient.on('disconnect',function(packet){
+      console.log("mqttjs disconnected");
+      mqttClient.connect('mqtt://localhost');  
+  });  
+  
   redisClient = redis.createClient();
   redisClient.on("error", function (err) {
     console.log("Error " + err);
   });
-
+//发送邮件客户端
   mailTransport = nodemailer.createTransport("SMTP", {
       host: "smtp.qq.com",
       secureConnection: true, // use SSL
@@ -90,7 +96,7 @@ function serverInit()
           pass: "xxxxx"
       }
   });
-
+//mongodb客户端
   mongodbClient.open(function(err, db) {
     if(!err) {
       mongo=db;
@@ -104,6 +110,8 @@ function serverInit()
 }
 serverInit();
 
+
+//微信实现逻辑
 exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   var message = req.weixin;
   var fromUser = message.FromUserName;  
