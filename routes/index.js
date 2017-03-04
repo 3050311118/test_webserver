@@ -27,6 +27,7 @@ function getAccessToken() {
     'secret': wxconfig .appsecret
   };
   var url = wxconfig.tokenUrl+qs.stringify(queryParams);
+  console.log(url);
   var options = {
     host: 'api.weixin.qq.com',
     method: 'GET',
