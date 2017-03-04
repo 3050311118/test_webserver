@@ -118,8 +118,9 @@ function serverInit()
   mqttClient.on('message', function (topic, message) {
      var msg=message.toString();
      console.log(msg);
-//      var msgJson=JSON.parse(msg);
-     WeixinPush('template',msg);      
+     var msgJson=JSON.parse(msg);
+     
+     WeixinPush('template',msgJson.openID);      
   });
                 
   redisClient = redis.createClient();
