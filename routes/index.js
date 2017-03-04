@@ -54,6 +54,7 @@ function weixinRequest(urltype,content){
           'Content-Length': strbody.length
         }
       };
+      console.log(url);
       console.log(strbody);
       var post_req = https.request(options, function(res){        
           res.on('data', function(buffer){
