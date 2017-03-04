@@ -25,10 +25,11 @@ function getAccessToken() {
     'appid': wxconfig .appid,
     'secret': wxconfig .appsecret
   };
-  var wxGetAccessTokenBaseUrl = 'https://api.weixin.qq.com/cgi-bin/token?'+qs.stringify(queryParams);
+  var url = '/cgi-bin/token?'+qs.stringify(queryParams);
   var options = {
+    host: 'api.weixin.qq.com',
     method: 'GET',
-    url: wxGetAccessTokenBaseUrl
+    url: url
   };
   request(options, function (err, res, body) {
     console.log(JSON.parse(body));
@@ -38,12 +39,11 @@ function getAccessToken() {
 
 function weixinRequest(urltype,content){
       var url='';
-      if(urltype===1){
+      if(urltype==='custom'){
         url='/cgi-bin/message/custom/send?access_token='+tokenValue.access_token;
-      }else if(urltype==2){
+      }else if(urltype==='template'){
         url='/cgi-bin/message/template/send?access_token='+tokenValue.access_token;
       }
-      var strbody=JSON.stringify(content);  
       var options = {
         host: 'api.weixin.qq.com',
         port: 443,
@@ -136,7 +136,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
             "content": "xxxx"
         }
       };
-      weixinRequest(1,ack);
+      weixinRequest('custom',ack);
     }else if(message.Content === '3'){
       var ack={ 
           "touser":"oHOgqwvXok5LsBNOOpV6jSZzX6Js", 
@@ -170,7 +170,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
                   } 
           } 
        };
-       weixinRequest(2,ack);      
+       weixinRequest('template',ack);      
     }
   }
 });
