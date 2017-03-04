@@ -110,7 +110,7 @@ function serverInit()
   mqttClient = mqtt.connect('mqtt://localhost');  
   mqttClient.on('connect', function () {
       console.log("mqttjs connected");
-      mqttClient.subscribe('push')
+      mqttClient.subscribe('alarm')
   });
   mqttClient.on('close',function(packet){
       console.log("mqttjs disconnected");   
