@@ -5,18 +5,6 @@ var ejs = require('ejs');
 var routes = require('./routes');
 var express = require('express');
 var app = express();   
-var request = require('request');
-var qs = require('querystring');
-var fs = require('fs');
-var config = require('./config');
-
-function getAccessToken() {
-  console.log("abcdefg");
-};
-
- setInterval(getAccessToken, 1000);
-
-
 
 var numCPUs = require('os').cpus().length;
 console.log(numCPUs);
