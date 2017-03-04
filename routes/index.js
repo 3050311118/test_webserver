@@ -44,7 +44,7 @@ function weixinRequest(urltype,content){
         url=url+wxconfig.templateUrl+tokenValue.access_token;
       }
       var options = {
-        url: url;
+        url: url,
         method: 'POST',
         body:JSON.stringify(content)
       };  
