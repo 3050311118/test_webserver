@@ -106,6 +106,11 @@ function serverInit()
   mongodbServer = new mongodb.Server('localhost', 27017, { auto_reconnect: true, poolSize: 10 });
   mongodbClient = new mongodb.Db('account', mongodbServer);
   mongoDataClient = new mongodb.Db('data', mongodbServer);
+  
+  redisClient = redis.createClient();
+  redisClient.on("error", function (err) {
+    console.log("Error " + err);
+  });
 
   mqttClient = mqtt.connect('mqtt://localhost');  
   mqttClient.on('connect', function () {
@@ -121,12 +126,7 @@ function serverInit()
      var msgJson=JSON.parse(msg);
      
      WeixinPush('template',msgJson.openID);      
-  });
-                
-  redisClient = redis.createClient();
-  redisClient.on("error", function (err) {
-    console.log("Error " + err);
-  });
+  });        
 //发送邮件客户端
   mailTransport = nodemailer.createTransport("SMTP", {
       host: "smtp.qq.com",
