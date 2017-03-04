@@ -28,7 +28,7 @@ function getAccessToken() {
   };
   var options = {
     method: 'GET',
-    url: 'https://api.weixin.qq.com'+wxconfig.tokenUrl+qs.stringify(queryParams);
+    url: 'https://api.weixin.qq.com'+wxconfig.tokenUrl+qs.stringify(queryParams)
   };
   request(options, function (err, res, body) {
     console.log(JSON.parse(body));
