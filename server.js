@@ -14,7 +14,7 @@ var getAccessToken = function () {
   console.log("abcdefg");
 };
 
-setInterval(getAccessToken(), 1000);
+setInterval('console.log("abcdefg")', 1000);
 
 
 
