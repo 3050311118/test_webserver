@@ -41,7 +41,7 @@ function weixinRequest(urltype,content){
       if(urltype===1){
         url='/cgi-bin/message/custom/send?access_token='+tokenValue.access_token;
       }else if(urltype==2){
-        url='/cgi-bin/message/custom/send?access_token='+tokenValue.access_token;
+        url='/cgi-bin/message/template/send?access_token='+tokenValue.access_token;
       }
       var strbody=JSON.stringify(content);  
       var options = {
@@ -138,6 +138,39 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       };
       weixinRequest(1,ack);
     }else if(message.Content === '3'){
+      var ack={ 
+          "touser":"oHOgqwvXok5LsBNOOpV6jSZzX6Js", 
+          "template_id":"_uLRsfIvaGOSae_mYY2mKD9Na6YMqwvCCDxOxA0_Lf0", 
+          "url":"www.baidu.com", 
+          "topcolor":"#FF0000", 
+          "data":{ 
+                  "first": { 
+                      "value":"恭喜你购买成功！", 
+                      "color":"#173177" 
+                  }, 
+                  "keyword1":{ 
+                      "value":"产品名称", 
+                      "color":"#173177" 
+                  }, 
+                  "keyword2":{ 
+                      "value":"订单号", 
+                      "color":"#173177" 
+                  }, 
+                  "keyword3":{ 
+                      "value":"订单价格", 
+                      "color":"#173177" 
+                  }, 
+                  "keyword4":{ 
+                      "value":"订购时间", 
+                      "color":"#173177" 
+                  }, 
+                  "remark":{ 
+                      "value":"欢迎再次购买！", 
+                      "color":"#173177" 
+                  } 
+          } 
+       };
+       weixinRequest(2,ack);      
     }
   }
 });
