@@ -15,7 +15,7 @@ var getAccessToken = function () {
     method: 'GET',
     url: wxGetAccessTokenBaseUrl
   };
-  return new Promise((resolve, reject) => {
+  return new Promise(function(resolve, reject){
     request(options, function (err, res, body) {
       if (res) {
         resolve(JSON.parse(body));
@@ -27,8 +27,8 @@ var getAccessToken = function () {
 };
 
 var saveToken = function () {
-  getAccessToken().then(res => {
-    let token = res['access_token'];
+  getAccessToken().then(function(){
+    var token = res['access_token'];
     fs.writeFile('./token', token, function (err) {
       
     });
