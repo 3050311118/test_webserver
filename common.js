@@ -1,17 +1,17 @@
-const request = require('request');
-const qs = require('querystring');
-const fs = require('fs');
-const config = require('config');
+var request = require('request');
+var qs = require('querystring');
+var fs = require('fs');
+var config = require('config');
 
-const getAccessToken = function () {
-  let queryParams = {
+var getAccessToken = function () {
+  var queryParams = {
     'grant_type': 'client_credential',
     'appid': config.appId,
     'secret': config.appSecret
   };
 
-  let wxGetAccessTokenBaseUrl = 'https://api.weixin.qq.com/cgi-bin/token?'+qs.stringify(queryParams);
-  let options = {
+  var wxGetAccessTokenBaseUrl = 'https://api.weixin.qq.com/cgi-bin/token?'+qs.stringify(queryParams);
+  var options = {
     method: 'GET',
     url: wxGetAccessTokenBaseUrl
   };
@@ -26,7 +26,7 @@ const getAccessToken = function () {
   })
 };
 
-const saveToken = function () {
+var saveToken = function () {
   getAccessToken().then(res => {
     let token = res['access_token'];
     fs.writeFile('./token', token, function (err) {
@@ -35,7 +35,7 @@ const saveToken = function () {
   })
 };
 
-const refreshToken = function () {
+var refreshToken = function () {
   saveToken();
   setInterval(function () {
     console.log("saveToken");
