@@ -37,31 +37,39 @@ function getAccessToken() {
 };
 //微信客服接口和模板接口
 function weixinRequest(urltype,content){
-      var url='';
+      var url='https://api.weixin.qq.com';
       if(urltype==='custom'){
-        url=wxconfig.customUrl+tokenValue.access_token;
+        url=url+wxconfig.customUrl+tokenValue.access_token;
       }else if(urltype==='template'){
-        url=wxconfig.templateUrl+tokenValue.access_token;
+        url=url+wxconfig.templateUrl+tokenValue.access_token;
       }
       var options = {
-        host: 'api.weixin.qq.com',
-        port: 443,
-        path: url, 
+        url: url;
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Content-Length': strbody.length
-        }
-      };
-      console.log(url);
-      console.log(strbody);
-      var post_req = https.request(options, function(res){        
-          res.on('data', function(buffer){
-             console.log(buffer.toString());
-          });
-      });   
-      post_req.write(strbody);
-      post_req.end();
+        body:JSON.stringify(content)
+      };  
+      request(options, function (err, res, body) {
+        console.log("send");
+      });  
+//       var options = {
+//         host: 'api.weixin.qq.com',
+//         port: 443,
+//         path: url, 
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//           'Content-Length': strbody.length
+//         }
+//       };
+//       console.log(url);
+//       console.log(strbody);
+//       var post_req = https.request(options, function(res){        
+//           res.on('data', function(buffer){
+//              console.log(buffer.toString());
+//           });
+//       });   
+//       post_req.write(strbody);
+//       post_req.end();
 }
 //初始化
 function serverInit()
