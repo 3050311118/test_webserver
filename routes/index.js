@@ -6,6 +6,8 @@ var mongodb = require('mongodb');
 var crypto = require('crypto');
 var uuid = require('node-uuid');  
 var https = require('https');
+var getToken=require('../common')
+//getToken();
 
 var mongodbServer;
 var mongoClient;
@@ -14,10 +16,33 @@ var mqttClient;
 var mongo,mongoData;
 var mailTransport;
 
-//函数
-function md5 (text) {
-  return crypto.createHash('md5').update(text).digest('hex');
-};
+function weixinRequest(urltype,content){
+      var url='';
+      if(urltype===1){
+        url='/cgi-bin/message/custom/send?access_token='+'NOz0ZN6ZAkVAlhcM_w95Fi_Ag1hqgiXfF6g4F8ADroAfnZAg_rDSGEP7tB0iSE4kY_Bu1RaY0Z-RpTnN9-4QPTHI-vFgT3nHJlMCM8gZoQbfuKL6SxaceY6IfZWPn8axFOQiAEAAJL';
+      }else if(urltype==2){
+        url='/cgi-bin/message/custom/send?access_token='+'NOz0ZN6ZAkVAlhcM_w95Fi_Ag1hqgiXfF6g4F8ADroAfnZAg_rDSGEP7tB0iSE4kY_Bu1RaY0Z-RpTnN9-4QPTHI-vFgT3nHJlMCM8gZoQbfuKL6SxaceY6IfZWPn8axFOQiAEAAJL';
+      }
+      var strbody=JSON.stringify(content);  
+      var options = {
+        host: 'api.weixin.qq.com',
+        port: 443,
+        path: url, 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': strbody.length
+        }
+      };
+      console.log(strbody);
+      var post_req = https.request(options, function(res){        
+          res.on('data', function(buffer){
+             console.log(buffer.toString());
+          });
+      });   
+      post_req.write(strbody);
+      post_req.end();
+}
 
 function serverInit()
 {
@@ -96,26 +121,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
             "content": "xxxx"
         }
       };
-      var strbody=JSON.stringify(ack);  
-      var url='https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=wdIoX9Arw1dAhjokszG9TrWi4v5PMkWb-CNEh1mMVRrPJtoKBMlipFa5aoS1CXhzBZf9hiYHn5GkxQoDxVUImzLU9-DbE0d5l5bZxF5sLnUVNBcABAIAO';
-      var options = {
-        host: 'api.weixin.qq.com',
-        port: 443,
-        path: '/cgi-bin/message/custom/send?access_token=wdIoX9Arw1dAhjokszG9TrWi4v5PMkWb-CNEh1mMVRrPJtoKBMlipFa5aoS1CXhzBZf9hiYHn5GkxQoDxVUImzLU9-DbE0d5l5bZxF5sLnUVNBcABAIAO',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Content-Length': strbody.length
-        }
-      };
-      console.log(strbody);
-      var post_req = https.request(options, function(res){        
-          res.on('data', function(buffer){
-           console.log(buffer.toString());
-          });
-      });   
-      post_req.write(strbody);
-      post_req.end();
+      weixinRequest(1,ack);
     }else if(message.Content === '3'){
     }
   }
