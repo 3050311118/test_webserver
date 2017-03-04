@@ -2,6 +2,7 @@ var request = require('request');
 var qs = require('querystring');
 var fs = require('fs');
 var config = require('./config');
+var tokenValue={};
 
 function getAccessToken() {
   var queryParams = {
@@ -18,11 +19,12 @@ function getAccessToken() {
   
   request(options, function (err, res, body) {
     console.log(JSON.parse(body));
+    tokenValue=body;
   });
 };
 
 var refreshToken = function () {
-  setInterval(getAccessToken, 10000);
+  setInterval(getAccessToken, 20000);
 };
 
 module.exports = refreshToken;
