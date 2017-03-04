@@ -68,7 +68,10 @@ function serverInit()
       console.log("mqttjs disconnected"); 
       mqttClient.connect('mqtt://localhost');  
   });  
-  
+  mqttClient.on('message', function (topic, message) {
+    console.log(message);
+  }
+                
   redisClient = redis.createClient();
   redisClient.on("error", function (err) {
     console.log("Error " + err);
