@@ -5,7 +5,7 @@ var ejs = require('ejs');
 var routes = require('./routes');
 var express = require('express');
 var app = express();   
-const getToken = require('.common');
+const getToken = require('./common');
 getToken();
 
 var numCPUs = require('os').cpus().length;
