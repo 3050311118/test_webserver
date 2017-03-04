@@ -1,15 +1,10 @@
-var cluster = require('cluster');
 var http = require('http');
 var path = require('path');
 var ejs = require('ejs');
 var routes = require('./routes');
 var express = require('express');
 var app = express();   
-var getToken=require('./common')
-getToken();
 
-var numCPUs = require('os').cpus().length;
-console.log(numCPUs);
 // all environments
 app.set('port', process.env.PORT || 9001);
 app.set('views', path.join(__dirname, 'views'));//__dirname
