@@ -22,8 +22,8 @@ var mailTransport;
 function getAccessToken() {
   var queryParams = {
     'grant_type': 'client_credential',
-    'appid': config.appid,
-    'secret': config.appsecret
+    'appid': wxconfig .appid,
+    'secret': wxconfig .appsecret
   };
   var wxGetAccessTokenBaseUrl = 'https://api.weixin.qq.com/cgi-bin/token?'+qs.stringify(queryParams);
   var options = {
