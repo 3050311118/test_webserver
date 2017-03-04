@@ -32,7 +32,7 @@ function getAccessToken() {
   };
   request(options, function (err, res, body) {
     console.log(JSON.parse(body));
-    tokenValue=body;
+    tokenValue=JSON.parse(body);
   });
 };
 
