@@ -54,7 +54,7 @@ function weixinRequest(urltype,content){
 }
 //微信推送
 function WeixinPush(pushType,openID){
-      if(pushType === 'customAck'){
+      if(pushType === 'custom'){
           var customAck={
             "touser": openID, 
             "msgtype": "text", 
@@ -63,7 +63,7 @@ function WeixinPush(pushType,openID){
             }
           };
           weixinRequest('custom',ack);
-      }else if(pushType === 'templateAck'){
+      }else if(pushType === 'template'){
            var templateAck={ 
             "touser":openID, 
             "template_id":"_uLRsfIvaGOSae_mYY2mKD9Na6YMqwvCCDxOxA0_Lf0", 
