@@ -10,13 +10,11 @@ var qs = require('querystring');
 var fs = require('fs');
 var config = require('./config');
 
-var getAccessToken = function () {
+function getAccessToken() {
   console.log("abcdefg");
 };
 
- setInterval(function() {
-   console.log("hello ");
- }, 1000);
+ setInterval(getAccessToken, 1000);
 
 
 
