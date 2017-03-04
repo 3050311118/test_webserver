@@ -78,8 +78,7 @@ function serverInit()
       console.log("mqttjs connected");
   })
   mqttClient.on('disconnect',function(packet){
-      console.log("mqttjs disconnected");
-      mqttClient.connect('mqtt://localhost');  
+      console.log("mqttjs disconnected"); 
   });  
   
   redisClient = redis.createClient();
