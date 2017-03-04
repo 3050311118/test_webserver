@@ -52,6 +52,41 @@ function weixinRequest(urltype,content){
         console.log("send");
       });  
 }
+function WeixinPush(openID){
+      var ack={ 
+        "touser":openID, 
+        "template_id":"_uLRsfIvaGOSae_mYY2mKD9Na6YMqwvCCDxOxA0_Lf0", 
+        "url":"www.baidu.com", 
+        "topcolor":"#FF0000", 
+        "data":{ 
+                "first": { 
+                    "value":"aaaaaaaa", 
+                    "color":"#173177" 
+                }, 
+                "keyword1":{ 
+                    "value":"bbbbbbbbb", 
+                    "color":"#173177" 
+                }, 
+                "keyword2":{ 
+                    "value":"ccccccc", 
+                    "color":"#173177" 
+                }, 
+                "keyword3":{ 
+                    "value":"ddddd", 
+                    "color":"#173177" 
+                }, 
+                "keyword4":{ 
+                    "value":"eeeee", 
+                    "color":"#173177" 
+                }, 
+                "remark":{ 
+                    "value":"fffff", 
+                    "color":"#173177" 
+                } 
+        } 
+     };
+     weixinRequest('template',ack);   
+}
 //初始化
 function serverInit()
 {
@@ -69,7 +104,10 @@ function serverInit()
       console.log("mqttjs disconnected");   
   });  
   mqttClient.on('message', function (topic, message) {
-      console.log(message);
+     var msg=message.toString();
+//      console.log(msg);
+//      var msgJson=JSON.parse(msg);
+     WeixinPush(msg);      
   });
                 
   redisClient = redis.createClient();
@@ -136,39 +174,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       };
       weixinRequest('custom',ack);
     }else if(message.Content === '3'){
-      var ack={ 
-          "touser":"oHOgqwvXok5LsBNOOpV6jSZzX6Js", 
-          "template_id":"_uLRsfIvaGOSae_mYY2mKD9Na6YMqwvCCDxOxA0_Lf0", 
-          "url":"www.baidu.com", 
-          "topcolor":"#FF0000", 
-          "data":{ 
-                  "first": { 
-                      "value":"aaaaaaaa", 
-                      "color":"#173177" 
-                  }, 
-                  "keyword1":{ 
-                      "value":"bbbbbbbbb", 
-                      "color":"#173177" 
-                  }, 
-                  "keyword2":{ 
-                      "value":"ccccccc", 
-                      "color":"#173177" 
-                  }, 
-                  "keyword3":{ 
-                      "value":"ddddd", 
-                      "color":"#173177" 
-                  }, 
-                  "keyword4":{ 
-                      "value":"eeeee", 
-                      "color":"#173177" 
-                  }, 
-                  "remark":{ 
-                      "value":"fffff", 
-                      "color":"#173177" 
-                  } 
-          } 
-       };
-       weixinRequest('template',ack);      
+   
     }
   }
 });
