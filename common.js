@@ -1,7 +1,7 @@
 var request = require('request');
 var qs = require('querystring');
 var fs = require('fs');
-var config = require('config');
+var config = require('./config');
 
 var getAccessToken = function () {
   var queryParams = {
