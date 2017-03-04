@@ -15,33 +15,14 @@ var getAccessToken = function () {
     method: 'GET',
     url: wxGetAccessTokenBaseUrl
   };
-  return new Promise(function(resolve, reject){
-    request(options, function (err, res, body) {
-      if (res) {
-        resolve(JSON.parse(body));
-      } else {
-        reject(err);
-      }
-    });
-  })
-};
-
-var saveToken = function () {
-  getAccessToken().then(function(){
-    var token = res['access_token'];
-    console.log(token);
-    fs.writeFile('./token', token, function (err) {
-      
-    });
-  })
+  
+  request(options, function (err, res, body) {
+    console.log(JSON.parse(body));
+  });
 };
 
 var refreshToken = function () {
-  saveToken();
-  setInterval(function () {
-    console.log("saveToken");
-    saveToken();
-  }, 1000);
+  setInterval(getAccessToken(), 1000);
 };
 
 module.exports = refreshToken;
