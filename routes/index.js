@@ -117,9 +117,9 @@ function serverInit()
   });  
   mqttClient.on('message', function (topic, message) {
      var msg=message.toString();
-//      console.log(msg);
+     console.log(msg);
 //      var msgJson=JSON.parse(msg);
-     WeixinPush(msg);      
+     WeixinPush('template',msg);      
   });
                 
   redisClient = redis.createClient();
