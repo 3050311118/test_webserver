@@ -124,7 +124,7 @@ function serverInit()
   mqttClient.on('message', function (topic, message) {
      var msg=message.toString();
      console.log("mqtt msg:"+msg);
-     var msgJson=JSON.parse(msg);
+     //var msgJson=JSON.parse(msg);
      
     // WeixinPush('template',msgJson.openID);      
   });        
