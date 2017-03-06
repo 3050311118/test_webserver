@@ -124,9 +124,12 @@ function serverInit()
   mqttClient.on('message', function (topic, message) {
      var msg=message.toString();
      console.log("mqtt msg:"+msg);
-     //var msgJson=JSON.parse(msg);
-     
-    // WeixinPush('template',msgJson.openID);      
+     try{
+       var msgJson=JSON.parse(msg);
+       WeixinPush('template',msgJson.openID);
+     }catch{
+       console.log("msg error");
+     }
   });        
 //发送邮件客户端
   mailTransport = nodemailer.createTransport("SMTP", {
