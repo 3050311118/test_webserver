@@ -126,7 +126,7 @@ function serverInit()
      console.log("mqtt msg:"+msg);
      var msgJson=JSON.parse(msg);
      
-     WeixinPush('template',msgJson.openID);      
+    // WeixinPush('template',msgJson.openID);      
   });        
 //发送邮件客户端
   mailTransport = nodemailer.createTransport("SMTP", {
