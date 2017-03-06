@@ -102,6 +102,7 @@ function WeixinPush(pushType,openID){
 //初始化
 function serverInit()
 {
+  tokenValue.access_token='-zdQbEREAPnwlPMo9fOZLpc0hpZIjFZXw_eqw8DbTa0YjpsZX3vPgngs0unBGpUUCkk1m-ka8qFq2NFJl-0h6wnH_Gt3s9SzuiERLVq7LyIMYeBbpSf4bYV1XXqz45zxHLOiACAUYB';
   setInterval(getAccessToken, 200000);
   mongodbServer = new mongodb.Server('localhost', 27017, { auto_reconnect: true, poolSize: 10 });
   mongodbClient = new mongodb.Db('account', mongodbServer);
