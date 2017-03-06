@@ -93,8 +93,11 @@ function serverInit()
   mongoDataClient = new mongodb.Db('data', mongodbServer);
   
   redisClient = redis.createClient();
+  redisClient.on('ready',function(err){
+    console.log('redisClient ready');
+  });
   redisClient.on("error", function (err) {
-    console.log("Error " + err);
+    console.log("redisClient Error " + err);
   });
 
   mqttClient = mqtt.connect('mqtt://localhost');  
@@ -149,6 +152,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   if(message.MsgType == 'event')
   {
     if(message.Event == 'subscribe'){//订阅事件
+      
       res.reply("欢迎订阅小聪科技");
     }else if(message.Event == 'unsubscribe'){
       
