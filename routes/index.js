@@ -53,47 +53,31 @@ function weixinRequest(urltype,content){
       });  
 }
 //微信推送
-function WeixinPush(pushType,openID){
+function WeixinPush(pushType,openID,content,name){
       if(pushType === 'custom'){
           var customPush={
             "touser": openID, 
             "msgtype": "text", 
             "text": {
-                "content": "xxxx"
+                "content": content
             }
           };
           weixinRequest('custom',customPush);
       }else if(pushType === 'template'){
            var templatePush={ 
             "touser":openID, 
-            "template_id":"_uLRsfIvaGOSae_mYY2mKD9Na6YMqwvCCDxOxA0_Lf0", 
+            "template_id":"Xfgsxqiosil5ddu5b6DaoDZirZr4bOXJC0tgceo8LFM", 
             "url":"www.baidu.com", 
             "topcolor":"#FF0000", 
             "data":{ 
-                    "first": { 
-                        "value":"aaaaaaaa", 
-                        "color":"#173177" 
-                    }, 
                     "keyword1":{ 
-                        "value":"bbbbbbbbb", 
+                        "value":name, 
                         "color":"#173177" 
                     }, 
                     "keyword2":{ 
-                        "value":"ccccccc", 
+                        "value":content, 
                         "color":"#173177" 
-                    }, 
-                    "keyword3":{ 
-                        "value":"ddddd", 
-                        "color":"#173177" 
-                    }, 
-                    "keyword4":{ 
-                        "value":"eeeee", 
-                        "color":"#173177" 
-                    }, 
-                    "remark":{ 
-                        "value":"fffff", 
-                        "color":"#173177" 
-                    } 
+                    }
             } 
          };
          weixinRequest('template',templatePush); 
