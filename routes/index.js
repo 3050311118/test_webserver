@@ -110,7 +110,7 @@ function serverInit()
      console.log("mqtt msg:"+msg);
      try{
        var msgJson=JSON.parse(msg);
-       WeixinPush('template',msgJson.openID);
+       WeixinPush('template',msgJson.openID,'AAA','bbb');
      }catch(e){
        console.log("msg error");
      }
@@ -167,10 +167,10 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       mqttClient.publish('WIFI2716979/SUB',"AAA");
     }else if(message.Content === '2'){
       res.reply("custom");
-      WeixinPush('custom',fromUser)
+      WeixinPush('custom',fromUser,'AAA',fromUser)
     }else if(message.Content === '3'){
       res.reply("template");
-      WeixinPush('template',fromUser)
+      WeixinPush('template',fromUser,'AAA',fromUser)
     }
   }
 });
