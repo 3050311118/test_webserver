@@ -110,7 +110,7 @@ function serverInit()
      console.log("mqtt msg:"+msg);
      try{
        var msgJson=JSON.parse(msg);
-       WeixinPush('template',msgJson.openID,"中文",msgJson.name);//msgJson.content
+       WeixinPush('template',msgJson.openID,msgJson.content,msgJson.name);//
      }catch(e){
        console.log("msg error");
      }
