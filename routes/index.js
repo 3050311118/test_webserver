@@ -127,7 +127,7 @@ function serverInit()
      try{
        var msgJson=JSON.parse(msg);
        WeixinPush('template',msgJson.openID);
-     }catch{
+     }catch(e){
        console.log("msg error");
      }
   });        
