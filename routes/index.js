@@ -31,9 +31,8 @@ function getAccessToken() {
     url: 'https://api.weixin.qq.com'+wxconfig.tokenUrl+qs.stringify(queryParams)
   };
   request(options, function (err, res, body) {
-    
     tokenValue=JSON.parse(body);
-    console.log(JSON.stringify(tokenValue));
+    console.log("getAccessToken"+JSON.stringify(tokenValue));
   });
 };
 //微信客服接口和模板接口
@@ -50,8 +49,7 @@ function weixinRequest(urltype,content){
         body:JSON.stringify(content)
       };  
       request(options, function (err, res, body) {
-        console.log("send");
-        console.log(JSON.stringify(body))
+        console.log("weixinRequest"+JSON.stringify(body))
       });  
 }
 //微信推送
