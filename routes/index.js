@@ -174,9 +174,9 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     }
   }else if(message.MsgType == 'text'){
     var content=message.Content;
-    if (content.substring(0,3)==="aaa"){
-      res.reply("aaaa");
-    }else if (content.substring(0,3)==="bbb"){
+    if (content.substring(0,2)==="BD"){
+      res.reply('请输入验证码');
+    }else if (content.substring(0,3)==="YZ"){
       res.reply("bbbb");
     }
     
