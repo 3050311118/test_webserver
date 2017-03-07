@@ -51,6 +51,7 @@ function weixinRequest(urltype,content){
       };  
       request(options, function (err, res, body) {
         console.log("send");
+        console.log(JSON.stringify(body))
       });  
 }
 //微信推送
