@@ -33,6 +33,7 @@ function getAccessToken() {
   request(options, function (err, res, body) {
     tokenValue=JSON.parse(body);
     console.log("getAccessToken"+JSON.stringify(tokenValue));
+    console.log("tokenValue:"+tokenValue.access_token));
   });
 };
 //微信客服接口和模板接口
@@ -86,8 +87,8 @@ function WeixinPush(pushType,openID,content,name){
 //初始化
 function serverInit()
 {
-   tokenValue.access_token='_sgT_yIVBwM_7wcrfdcFGuKJPo2cJqIg2BjOGK04da5cH4p6br13j4V1FaoCl9iak7pMRqd5UUBzzN_Q2-eYlikw-b7IYfrypTCDf-0VKnDwy5dEyHj1gPWfCa3RI-EaWAVfACAOSN';
- // getAccessToken();
+//    tokenValue.access_token='_sgT_yIVBwM_7wcrfdcFGuKJPo2cJqIg2BjOGK04da5cH4p6br13j4V1FaoCl9iak7pMRqd5UUBzzN_Q2-eYlikw-b7IYfrypTCDf-0VKnDwy5dEyHj1gPWfCa3RI-EaWAVfACAOSN';
+  getAccessToken();
   setInterval(getAccessToken, 7000000);
   mongodbServer = new mongodb.Server('localhost', 27017, { auto_reconnect: true, poolSize: 10 });
   mongodbClient = new mongodb.Db('account', mongodbServer);
