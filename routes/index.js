@@ -65,12 +65,19 @@ function WeixinPush(pushType,openID,content,name){
           };
           weixinRequest('custom',customPush);
       }else if(pushType === 'template'){
+          var myDate = new Date();        
+          var alarmDate = myDate.getYear()+"年"+myDate.getMonth()+"月"+myDate.getDate()+"日"+myDate.getHours()+"点"+myDate.getMinutes()+"分";
+        
            var templatePush={ 
             "touser":openID, 
             "template_id":"Xfgsxqiosil5ddu5b6DaoDZirZr4bOXJC0tgceo8LFM", 
-            "url":"www.baidu.com", 
+            "url":"panel.mogudz.com/real.html", 
             "topcolor":"#FF0000", 
             "data":{ 
+                   "first": {
+                       "value": alarmDate,
+                       "color":"#173177"
+                    },
                     "keyword1":{ 
                         "value":name, 
                         "color":"#173177" 
@@ -78,7 +85,11 @@ function WeixinPush(pushType,openID,content,name){
                     "keyword2":{ 
                         "value":content, 
                         "color":"#173177" 
-                    }
+                    },
+                    "remark":{
+                       "value":"点击详情查看数据",
+                       "color":"#173177"
+                   }
             } 
          };
          weixinRequest('template',templatePush); 
