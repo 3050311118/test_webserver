@@ -155,17 +155,14 @@ function serverInit()
 }
 serverInit();
 
-
 //微信实现逻辑
 exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   var message = req.weixin;
   var fromUser = message.FromUserName;  
   console.log(message);
-  
   if(message.MsgType == 'event')
   {
     if(message.Event == 'subscribe'){//订阅事件
-      
       res.reply("欢迎订阅小聪科技");
     }else if(message.Event == 'unsubscribe'){
       
@@ -179,7 +176,6 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     }else if (content.substring(0,2)==="YZ"){
       res.reply("bbbb");
     }
-    
     if(message.Content === '1'){
       mqttClient.publish('WIFI2716979/SUB',"AAA");
     }else if(message.Content === '2'){
