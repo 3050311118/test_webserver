@@ -31,8 +31,9 @@ function getAccessToken() {
     url: 'https://api.weixin.qq.com'+wxconfig.tokenUrl+qs.stringify(queryParams)
   };
   request(options, function (err, res, body) {
-    console.log(JSON.parse(body));
+    
     tokenValue=JSON.parse(body);
+    console.log(JSON.stringify(tokenValue));
   });
 };
 //微信客服接口和模板接口
