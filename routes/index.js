@@ -160,16 +160,16 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   var message = req.weixin;
   var fromUser = message.FromUserName;  
   console.log(message);
-  if(message.MsgType == 'event')
+  if(message.MsgType === 'event')
   {
-    if(message.Event == 'subscribe'){//订阅事件
+    if(message.Event === 'subscribe'){//订阅事件
       res.reply("欢迎订阅小聪科技");
-    }else if(message.Event == 'unsubscribe'){
+    }else if(message.Event === 'unsubscribe'){
       
-    }else if(message.Event == 'scancode_waitmsg'){
+    }else if(message.Event === 'scancode_waitmsg'){
       res.reply("请输入并发送标签上的验证码");
     }
-  }else if(message.MsgType == 'text'){
+  }else if(message.MsgType === 'text'){
     var content=message.Content;
     if (content.substring(0,2)==="BD"){
       res.reply('请输入验证码');
