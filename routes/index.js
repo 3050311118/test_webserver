@@ -86,7 +86,7 @@ function WeixinPush(pushType,openID,content,name){
 //初始化
 function serverInit()
 {
-   tokenValue.access_token='-zdQbEREAPnwlPMo9fOZLpc0hpZIjFZXw_eqw8DbTa0YjpsZX3vPgngs0unBGpUUCkk1m-ka8qFq2NFJl-0h6wnH_Gt3s9SzuiERLVq7LyIMYeBbpSf4bYV1XXqz45zxHLOiACAUYB';
+   tokenValue.access_token='_sgT_yIVBwM_7wcrfdcFGuKJPo2cJqIg2BjOGK04da5cH4p6br13j4V1FaoCl9iak7pMRqd5UUBzzN_Q2-eYlikw-b7IYfrypTCDf-0VKnDwy5dEyHj1gPWfCa3RI-EaWAVfACAOSN';
  // getAccessToken();
   setInterval(getAccessToken, 7000000);
   mongodbServer = new mongodb.Server('localhost', 27017, { auto_reconnect: true, poolSize: 10 });
