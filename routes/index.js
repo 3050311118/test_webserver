@@ -33,7 +33,7 @@ function getAccessToken() {
   request(options, function (err, res, body) {
     tokenValue=JSON.parse(body);
     console.log("getAccessToken"+JSON.stringify(tokenValue));
-    console.log("tokenValue:"+tokenValue.access_token));
+    console.log("tokenValue:"+tokenValue.access_token);
   });
 };
 //微信客服接口和模板接口
