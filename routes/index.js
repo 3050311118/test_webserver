@@ -184,7 +184,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       mqttClient.publish('WIFI2716979/SUB',"AAA");
     }else if(message.Content === '2'){
       res.reply("custom");
-      WeixinPush('custom',fromUser,'AAA',fromUser)
+      WeixinPush('custom',fromUser,'请输入验证码',fromUser)
     }else if(message.Content === '3'){
       res.reply("template");
       WeixinPush('template',fromUser,'AAA',fromUser)
