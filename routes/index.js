@@ -232,16 +232,21 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       redisClient.hget(fromUser,"BD_SN",function(err,response){  
           if(err){  
               console.log("redis err"); 
-              res.reply("正在绑定");
+              res.reply("数据出错");
           }else{  
               console.log(response);  
-              var sn=response;
+             if(response === null){
+                res.reply("请先扫描或者输入序列号");
+             }else{
               res.reply("正在绑定");
-              BandAction(fromUser,check,sn);
+              BandAction(fromUser,check,response);
+             }
           }  
       });       
     }
-    if(message.Content === '1'){
+     
+     
+    if(message.Content === '1'){//调试
       dict.put(fromUser, "China");
       console.log(dict.get(fromUser))
     }else if(message.Content === '2'){
