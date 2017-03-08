@@ -54,10 +54,10 @@ function weixinRequest(urltype,content){
       });  
 }
 //微信推送
-function WeixinPush(pushType,openID,content,name){
+function WeixinPush(pushType,openid,content,name){
       if(pushType === 'custom'){
           var customPush={
-            "touser": openID, 
+            "touser": openid, 
             "msgtype": "text", 
             "text": {
                 "content": content
@@ -69,7 +69,7 @@ function WeixinPush(pushType,openID,content,name){
           var alarmDate = myDate.getYear()+"年"+myDate.getMonth()+"月"+myDate.getDate()+"日"+myDate.getHours()+"点"+myDate.getMinutes()+"分";
         
            var templatePush={ 
-            "touser":openID, 
+            "touser":openid, 
             "template_id":"Xfgsxqiosil5ddu5b6DaoDZirZr4bOXJC0tgceo8LFM", 
             "url":"panel.mogudz.com/real.html", 
             "topcolor":"#FF0000", 
@@ -136,7 +136,7 @@ function serverInit()
      console.log("mqtt msg:"+msg);
      try{
        var msgJson=JSON.parse(msg);
-       WeixinPush('template',msgJson.openID,msgJson.content,msgJson.name);//
+       WeixinPush('template',msgJson.openid,msgJson.content,msgJson.name);
      }catch(e){
        console.log("msg error");
      }
