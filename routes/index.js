@@ -95,6 +95,16 @@ function WeixinPush(pushType,openID,content,name){
          weixinRequest('template',templatePush); 
       }    
 }
+//向设备发送绑定请求
+function BandAction(openid,check,toDev,content){
+  var arr={};
+  arr.action="BD";
+  arr.openid=openid;
+  arr.check=check;
+  arr.content=content;
+  console.log(JSON.stringify(arr));
+  mqttClient.publish(toDev+'/SUB',JSON.stringify(arr));
+}
 //初始化
 function serverInit()
 {
@@ -180,7 +190,9 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     if (content.substring(0,2)==="BD"){
       res.reply('请输入验证码');
     }else if (content.substring(0,2)==="YZ"){
-      res.reply("bbbb");
+      res.reply("正在绑定");
+      var check=content.substring(2);
+      BandAction(fromUser,check,'WIFI5CCF7F29744B');
     }
     if(message.Content === '1'){
       mqttClient.publish('WIFI2716979/SUB',"AAA");
