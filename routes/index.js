@@ -210,7 +210,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
 //       if(message.ScanCodeInfo ===''){
 //         res.reply("请输入并发送标签上的验证码");
 //       }
-       var json=message.ScanCodeInfo;
+       var json=message.ScanCodeInfo.ScanResult;
        console.log(json);
     }else if(message.Event === 'CLICK'){
       if(message.EventKey === 'QUERY_WEIXINID'){
