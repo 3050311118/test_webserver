@@ -208,9 +208,10 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
 
     }else if(message.Event === 'scancode_waitmsg'){
        var scanresult=message.ScanCodeInfo.ScanResult;
-       if(scanresult.substring(0,2)==="BD"){
-         dict.put(fromUser, scanresult.substring(2));
-         res.reply("请输入验证码 加上前缀YZ");
+       if(scanresult.substring(0,2)==="BD"){  
+         client.hset(fromUser,"BD_SN",scanresult.substring(2),  function(error){
+            res.reply("请输入验证码 加上前缀YZ");
+         }); 
        }else{
          res.reply("扫描不匹配");
        }
@@ -224,6 +225,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   }else if(message.MsgType === 'text'){
     var content=message.Content;
     if (content.substring(0,2)==="BD"){
+      client.hset(fromUser, "BD_SN",content.substring(2), redis.print); 
       res.reply('请输入验证码');
     }else if (content.substring(0,2)==="YZ"){
       res.reply("正在绑定");
