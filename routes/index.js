@@ -221,10 +221,9 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       }if(message.EventKey === 'QUERY_HARDWARE'){
          res.reply([
            {
-             title: '你来我家接我吧',
-             description: '这是女神与高富帅之间的对话',
-             picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
-             url: 'http://nodeapi.cloudfoundry.com/'
+             title: '我的在线设备',
+             description: '打开网页查看我的在线设备',
+             url: 'http://nodeapi.cloudfoundry.com/'+fromUser
            }
          ]);
       }         
