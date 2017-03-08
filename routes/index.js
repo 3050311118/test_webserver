@@ -18,6 +18,27 @@ var mqttClient;
 var mongo,mongoData;
 var mailTransport;
 var tokenValue={};
+var dict;
+
+//自定义对象
+function Dictionary(){
+   this.data = new Array();
+   this.put = function(key,value){
+    this.data[key] = value;
+   };
+   this.get = function(key){
+    return this.data[key];
+   };
+   this.remove = function(key){
+    this.data[key] = null;
+   };
+   this.isEmpty = function(){
+    return this.data.length == 0;
+   };
+   this.size = function(){
+    return this.data.length;
+   };
+}
 
 //定时获取微信access_token
 function getAccessToken() {
@@ -105,10 +126,12 @@ function BandAction(openid,check,toDev,content){
   console.log(JSON.stringify(arr));
   mqttClient.publish(toDev+'/SUB',JSON.stringify(arr));
 }
+
 //初始化
 function serverInit()
 {
 //    tokenValue.access_token='_sgT_yIVBwM_7wcrfdcFGuKJPo2cJqIg2BjOGK04da5cH4p6br13j4V1FaoCl9iak7pMRqd5UUBzzN_Q2-eYlikw-b7IYfrypTCDf-0VKnDwy5dEyHj1gPWfCa3RI-EaWAVfACAOSN';
+  dict = new Dictionary();
   getAccessToken();
   setInterval(getAccessToken, 7000000);
   mongodbServer = new mongodb.Server('localhost', 27017, { auto_reconnect: true, poolSize: 10 });
@@ -202,7 +225,8 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       BandAction(fromUser,check,'WIFI5CCF7F29744B');
     }
     if(message.Content === '1'){
-      mqttClient.publish('WIFI2716979/SUB',"AAA");
+      dict.put(fromUser, "China");
+      console.log(dict.get(fromUser))
     }else if(message.Content === '2'){
       res.reply("custom");
       WeixinPush('custom',fromUser,'请输入验证码',fromUser)
