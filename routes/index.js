@@ -219,7 +219,14 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       if(message.EventKey === 'QUERY_WEIXINID'){
         res.reply(fromUser);
       }if(message.EventKey === 'QUERY_HARDWARE'){
-        res.reply("QUERY_HARDWARE");
+         res.reply([
+           {
+             title: '你来我家接我吧',
+             description: '这是女神与高富帅之间的对话',
+             picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
+             url: 'http://nodeapi.cloudfoundry.com/'
+           }
+         ]);
       }         
     }
   }else if(message.MsgType === 'text'){
