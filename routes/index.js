@@ -20,7 +20,7 @@ var mailTransport;
 var tokenValue={};
 var dict;
 
-//自定义对象
+//自定义对象  get set
 function Dictionary(){
    this.data = new Array();
    this.put = function(key,value){
@@ -131,7 +131,7 @@ function BandAction(openid,check,toDev,content){
 function serverInit()
 {
 //    tokenValue.access_token='_sgT_yIVBwM_7wcrfdcFGuKJPo2cJqIg2BjOGK04da5cH4p6br13j4V1FaoCl9iak7pMRqd5UUBzzN_Q2-eYlikw-b7IYfrypTCDf-0VKnDwy5dEyHj1gPWfCa3RI-EaWAVfACAOSN';
-  dict = new Dictionary();
+//   dict = new Dictionary();
   getAccessToken();
   setInterval(getAccessToken, 7000000);
   mongodbServer = new mongodb.Server('localhost', 27017, { auto_reconnect: true, poolSize: 10 });
@@ -209,7 +209,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     }else if(message.Event === 'scancode_waitmsg'){
        var scanresult=message.ScanCodeInfo.ScanResult;
        if(scanresult.substring(0,2)==="BD"){  
-         client.hset(fromUser,"BD_SN",scanresult.substring(2),  function(error){
+         redisClient.hset(fromUser,"BD_SN",scanresult.substring(2),  function(error){
             res.reply("请输入验证码 加上前缀YZ");
          }); 
        }else{
