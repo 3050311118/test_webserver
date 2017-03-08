@@ -126,7 +126,8 @@ function serverInit()
   mqttClient = mqtt.connect('mqtt://localhost');  
   mqttClient.on('connect', function () {
       console.log("mqttjs connected");
-      mqttClient.subscribe('alarm')
+      mqttClient.subscribe('alarm');
+      mqttClient.subscribe('devack');
   });
   mqttClient.on('close',function(packet){
       console.log("mqttjs disconnected");   
@@ -134,6 +135,7 @@ function serverInit()
   mqttClient.on('message', function (topic, message) {
      var msg=message.toString();
      console.log("mqtt msg:"+msg);
+     console.log(topic);
      try{
        var msgJson=JSON.parse(msg);
        WeixinPush('template',msgJson.openid,msgJson.content,msgJson.name);
