@@ -205,9 +205,12 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     if(message.Event === 'subscribe'){//订阅事件
       res.reply("欢迎订阅小聪科技");
     }else if(message.Event === 'unsubscribe'){
-      
+      ScanCodeInfo: { ScanType: 'qrcode', ScanResult: 'BDWIFI5CCF7F29744B'
     }else if(message.Event === 'scancode_waitmsg'){
-      res.reply("请输入并发送标签上的验证码");
+//       if(message.ScanCodeInfo ===''){
+//         res.reply("请输入并发送标签上的验证码");
+//       }
+       console.log(message.ScanCodeInfo.ScanResult);
     }else if(message.Event === 'CLICK'){
       if(message.EventKey === 'QUERY_WEIXINID'){
         res.reply(fromUser);
