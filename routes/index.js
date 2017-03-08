@@ -169,7 +169,11 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     }else if(message.Event === 'scancode_waitmsg'){
       res.reply("请输入并发送标签上的验证码");
     }else if(message.Event === 'CLICK'){
-      res.reply("CLICK");
+      if(message.EventKey === 'QUERY_WEIXINID'){
+        res.reply("QUERY_WEIXINID");
+      }if(message.EventKey === 'QUERY_HARDWARE'){
+        res.reply("QUERY_HARDWARE");
+      }         
     }
   }else if(message.MsgType === 'text'){
     var content=message.Content;
