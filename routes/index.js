@@ -219,12 +219,14 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       if(message.EventKey === 'QUERY_WEIXINID'){
         res.reply(fromUser);
       }if(message.EventKey === 'QUERY_HARDWARE'){
-         res.reply([
-           {
+         var arr={
              title: '我的在线设备',
              description: '打开网页查看我的在线设备',
              url: 'http://nodeapi.cloudfoundry.com/'+fromUser
-           }
+           };
+         console.log(JSON.stringify(arr))
+         res.reply([
+            arr
          ]);
       }         
     }
