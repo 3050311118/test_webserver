@@ -228,7 +228,8 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     }else if (content.substring(0,2)==="YZ"){
       res.reply("正在绑定");
       var check=content.substring(2);
-      BandAction(fromUser,check,'WIFI5CCF7F29744B');
+      var sn = dict.get(fromUser);
+      BandAction(fromUser,check,sn);
     }
     if(message.Content === '1'){
       dict.put(fromUser, "China");
