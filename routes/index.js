@@ -138,7 +138,12 @@ function serverInit()
      console.log(topic);
      try{
        var msgJson=JSON.parse(msg);
-       WeixinPush('template',msgJson.openid,msgJson.content,msgJson.name);
+       if(topic === 'alarm')
+       {
+         WeixinPush('template',msgJson.openid,msgJson.content,msgJson.name);
+       }else if(topic === 'devack'){
+         WeixinPush('custom',msgJson.openid,msgJson.content,msgJson.name);
+       }       
      }catch(e){
        console.log("msg error");
      }
