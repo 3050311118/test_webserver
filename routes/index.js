@@ -207,11 +207,13 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
     }else if(message.Event === 'unsubscribe'){
 
     }else if(message.Event === 'scancode_waitmsg'){
-//       if(message.ScanCodeInfo ===''){
-//         res.reply("请输入并发送标签上的验证码");
-//       }
-       var json=message.ScanCodeInfo.ScanResult;
-       console.log(json);
+       var scanresult=message.ScanCodeInfo.ScanResult;
+       if(scanresult.substring(0,2)==="BD"){
+         dict.put(fromUser, scanresult.substring(2));
+         res.reply("请输入验证码 加上前缀YZ");
+       }else{
+         res.reply("扫描不匹配");
+       }
     }else if(message.Event === 'CLICK'){
       if(message.EventKey === 'QUERY_WEIXINID'){
         res.reply(fromUser);
