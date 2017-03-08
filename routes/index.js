@@ -168,6 +168,8 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       
     }else if(message.Event === 'scancode_waitmsg'){
       res.reply("请输入并发送标签上的验证码");
+    }else if(message.Event === 'CLICK'){
+      res.reply("CLICK");
     }
   }else if(message.MsgType === 'text'){
     var content=message.Content;
