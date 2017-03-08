@@ -170,7 +170,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       res.reply("请输入并发送标签上的验证码");
     }else if(message.Event === 'CLICK'){
       if(message.EventKey === 'QUERY_WEIXINID'){
-        res.reply("QUERY_WEIXINID");
+        res.reply(fromUser);
       }if(message.EventKey === 'QUERY_HARDWARE'){
         res.reply("QUERY_HARDWARE");
       }         
