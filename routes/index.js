@@ -229,9 +229,16 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
       res.reply('请输入验证码');
     }else if (content.substring(0,2)==="YZ"){
       res.reply("正在绑定");
-      var check=content.substring(2);
-      var sn = dict.get(fromUser);
-      BandAction(fromUser,check,sn);
+      var check=content.substring(2);      
+      redisClient.hget(fromUser,"BD_SN",function(err,res){  
+          if(err){  
+              console.log("redis err");  
+          }else{  
+              console.log(res);  
+          }  
+      });  
+//       var sn res.reply("请输入验证码 加上前缀YZ");
+//       BandAction(fromUser,check,sn);
     }
     if(message.Content === '1'){
       dict.put(fromUser, "China");
