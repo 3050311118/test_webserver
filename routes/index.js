@@ -223,7 +223,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
            {
              title: '我的在线设备',
              description: '打开链接查看我的在线设备',
-             url: 'http://panel.mogudz.com/real.html'//+fromUser
+             url: 'http://jssdk.mogudz.com/devlist.php?id='+fromUser
            }
          ]);
       }         
