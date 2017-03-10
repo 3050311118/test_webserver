@@ -231,7 +231,7 @@ exports.wechat = wechat(wxconfig.token, function (req, res, next) {
   }else if(message.MsgType === 'text'){
     var content=message.Content;
     if (content.substring(0,2)==="BD"){
-      client.hset(fromUser, "BD_SN",content.substring(2), redis.print); 
+      redisClient.hset(fromUser, "BD_SN",content.substring(2), redis.print); 
       res.reply('请输入验证码');
     }else if (content.substring(0,2)==="YZ"){
       var check=content.substring(2);      
